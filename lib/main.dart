@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:seegong_flutter/NavigationMenu.dart';
+
+import 'NavigationMenu.dart';
+import 'SpaceListScreen.dart';
 
 final GlobalKey<ScaffoldState> _key = GlobalKey();
 
@@ -33,10 +35,16 @@ class MyApp extends StatelessWidget {
               },
           ),
       ),
-      body: Text("TEXT HERE"),
+      body: ElevatedButton(
+        child: Text("장소 화면 이동 테스트용"),
+        onPressed: (){
+          // todo
+          Navigator.push(context, MaterialPageRoute(builder: (context){
+            return SpaceListScreen();
+          }));
+        },
+      ),
       drawer: NavigationMenu(),
     );
   }
 }
-
-
