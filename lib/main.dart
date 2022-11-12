@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:seegong_flutter/SpaceSelect.dart';
 
 import 'LoginScreen.dart';
 
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.white,
       ),
       //home: LoginScreen(),
-      home: LoginScreen(),
+      home: SpaceSelect(),
     );
   }
 }
