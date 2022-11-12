@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class SpaceSelect extends StatelessWidget {
+  const SpaceSelect({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
