@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'LoginScreen.dart';
+import 'package:seegong_flutter/SpaceListScreen.dart';
 import 'package:seegong_flutter/screens/Rservation.dart';
 import 'package:seegong_flutter/screens/specificScreen.dart';
-import 'package:seegong_flutter/NavigationMenu.dart';
-import 'SpaceListScreen.dart';
+
 
 void main() => runApp(MyApp());
 final GlobalKey<ScaffoldState> _key = GlobalKey();
@@ -22,10 +21,11 @@ class MyApp extends StatelessWidget {
         '/':(context) => SpecificScreen(),
         ReservationScreen.routename : (context) => ReservationScreen(),
         SpecificScreen.routename : (context) => SpecificScreen(),
+        SpaceListScreen.routename: (context) => SpaceListScreen(),
       },
     );
   }
 }
-      key: _key,
-      drawer: NavigationMenu(),
-                _key.currentState?.openDrawer();
+      // key: _key,
+      // drawer: NavigationMenu(),
+      //           _key.currentState?.openDrawer();

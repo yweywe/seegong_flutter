@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-
 import 'NavigationMenu.dart';
 
 final GlobalKey<ScaffoldState> _key = GlobalKey();
 
 class SpaceListScreen extends StatelessWidget {
   const SpaceListScreen({Key? key}) : super(key: key);
-
+  static final routename = '/SpaceListScreen';
   @override
   Widget build(BuildContext context) {
     List<Map<dynamic, dynamic>> testList = [

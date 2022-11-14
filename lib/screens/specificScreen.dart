@@ -3,16 +3,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:seegong_flutter/etc/shadow.dart';
 import 'package:seegong_flutter/screens/Rservation.dart';
-import 'package:seegong_flutter/screens/calendar.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
-import 'package:url_launcher/url_launcher.dart';
-
-
-
-
 import 'package:intl/intl.dart';
 import 'package:time_range/time_range.dart';
 
+import '../NavigationMenu.dart';
+
+
+final GlobalKey<ScaffoldState> _key = GlobalKey();
 
 class SpecificScreen extends StatefulWidget {
   const SpecificScreen({Key? key}) : super(key: key);
@@ -41,11 +39,17 @@ class _SpecificScreenState extends State<SpecificScreen> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
+      key: _key,
       backgroundColor: Colors.white,
       appBar: AppBar(
         toolbarHeight: 80,
+        leading: IconButton(
+            icon: Icon(Icons.menu),
+            onPressed: () {
+              _key.currentState?.openDrawer();
+            }),
       ),
-      drawer: Drawer(),
+      drawer: NavigationMenu(),
       body: ListView(
         children: [
           Container(
