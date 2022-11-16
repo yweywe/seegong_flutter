@@ -16,7 +16,7 @@ class NavigationMenu extends StatelessWidget {
             /// 상단부 계정 헤더
             UserAccountsDrawerHeader(
               currentAccountPicture: CircleAvatar(
-                backgroundImage: AssetImage('images/icons/wwf.jpeg'),
+                backgroundImage: AssetImage('images/imgs/wws.jpeg'),
               ),
               accountEmail: Text('test@gmail.com'),
               accountName: Text('testName'),

@@ -2,15 +2,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:seegong_flutter/etc/shadow.dart';
-import 'package:seegong_flutter/screens/Rservation.dart';
+import 'package:seegong_flutter/screens/Appbar.dart';
+import 'package:seegong_flutter/screens/Reservation.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:intl/intl.dart';
 import 'package:time_range/time_range.dart';
 
-import '../NavigationMenu.dart';
-
-
-final GlobalKey<ScaffoldState> _key = GlobalKey();
+import 'NavigationMenu.dart';
 
 class SpecificScreen extends StatefulWidget {
   const SpecificScreen({Key? key}) : super(key: key);
@@ -37,18 +35,9 @@ class _SpecificScreenState extends State<SpecificScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
     return Scaffold(
-      key: _key,
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        toolbarHeight: 80,
-        leading: IconButton(
-            icon: Icon(Icons.menu),
-            onPressed: () {
-              _key.currentState?.openDrawer();
-            }),
-      ),
+      appBar: Appbarseegong,
       drawer: NavigationMenu(),
       body: ListView(
         children: [
@@ -56,7 +45,6 @@ class _SpecificScreenState extends State<SpecificScreen> {
             padding: EdgeInsets.all(20),
             child: Column(
               children: [
-
                 SizedBox(
                   height: 30,
                 ),
@@ -77,6 +65,7 @@ class _SpecificScreenState extends State<SpecificScreen> {
                 ),
                 SizedBox(height: 10,),
 
+                //장소 명, 장소 소개
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -92,7 +81,6 @@ class _SpecificScreenState extends State<SpecificScreen> {
                           ),
                         ),
 
-
                         Text(
                           '${t1.Spaceintroduction}',
                           style: TextStyle(
@@ -106,27 +94,26 @@ class _SpecificScreenState extends State<SpecificScreen> {
                   ],
                 ),
                 SizedBox(height: 15,),
+
+
+
                 Container(
                   width: double.infinity,
                   height: 3,
                   color: Colors.black.withOpacity(0.3),
                 ),
                 SizedBox(height: 5,),
-
-
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Expanded(
                       flex: 1,
                       child: GestureDetector(
                         onTap: (){
-                          SpecificCalenderView(context);
+                          SpecificCalenderView(context); // 날짜 선택
                         },
                         child: TextIf(context, '희망 날짜', DataTimeEditingController, 15)
                       ),
                     ),
-
 
                     Expanded(
                       flex: 1,
@@ -344,9 +331,12 @@ class _SpecificScreenState extends State<SpecificScreen> {
                               DataTimeEditingController,
                               InitTimeEditngController,
                               EndTimeEditingController,
-                            TotalRentTIme
-                          ));
+                              TotalRentTIme
+                          ));}
+                    else {
+                      print("뭔가 이상함");
                     }
+
                     },
                   ),
                 ),
@@ -360,9 +350,6 @@ class _SpecificScreenState extends State<SpecificScreen> {
       ),
     );
   }
-
-
-
 
 
   void SpecificCalenderView(BuildContext context) {
@@ -560,8 +547,8 @@ class SpecificParameter {
 
 
 
-TextIf(BuildContext context, String str, TextEditingController? dtfm, double size) {
-  if (dtfm!.text == "") {
+TextIf(BuildContext context, String str, TextEditingController dtfm, double size) {
+  if (dtfm.text == "") {
     return Container(
       alignment: Alignment.center,
       child: Text(

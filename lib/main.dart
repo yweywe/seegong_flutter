@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:seegong_flutter/SpaceListScreen.dart';
-import 'package:seegong_flutter/screens/Rservation.dart';
+import 'package:seegong_flutter/screens/LoginScreen.dart';
+import 'package:seegong_flutter/screens/SpaceListScreen.dart';
+import 'package:seegong_flutter/screens/Reservation.dart';
+import 'package:seegong_flutter/screens/SpaceSelect.dart';
 import 'package:seegong_flutter/screens/specificScreen.dart';
 
 
@@ -14,18 +16,17 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Seegong',
       theme: ThemeData(
+        fontFamily: 'gsans',
         primaryColor: Colors.white,
       ),
       initialRoute: '/',
       routes: {
-        '/':(context) => SpecificScreen(),
-        ReservationScreen.routename : (context) => ReservationScreen(),
-        SpecificScreen.routename : (context) => SpecificScreen(),
+        '/':(context) => LoginScreen(),
+        SpaceSelect.routename: (context) => SpaceSelect(),
         SpaceListScreen.routename: (context) => SpaceListScreen(),
+        SpecificScreen.routename : (context) => SpecificScreen(),
+        ReservationScreen.routename : (context) => ReservationScreen(),
       },
     );
   }
 }
-      // key: _key,
-      // drawer: NavigationMenu(),
-      //           _key.currentState?.openDrawer();
