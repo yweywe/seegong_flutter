@@ -1,4 +1,6 @@
 
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:seegong_flutter/etc/shadow.dart';
@@ -7,6 +9,7 @@ import 'package:seegong_flutter/screens/Reservation.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:intl/intl.dart';
 import 'package:time_range/time_range.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import 'NavigationMenu.dart';
 
@@ -153,7 +156,8 @@ class _SpecificScreenState extends State<SpecificScreen> {
                     Container(
                       width: MediaQuery.of(context).size.width,
                       height: 350,
-                      color: Colors.black,
+                      child: GMap(),
+                      //color: Colors.black,
                     ),
                     SizedBox(height: 40,),
 
@@ -587,4 +591,32 @@ class ToReservArgument {
       this.EndTimeEditingController,
       this.TotalRentTIme
       );
+}
+
+
+class GMap extends StatefulWidget {
+  @override
+  State<GMap> createState() => GMapState();
+}
+
+class GMapState extends State<GMap> {
+  Completer<GoogleMapController> _controller = Completer();
+
+  static final CameraPosition _lAngels = CameraPosition(
+      target: LatLng(37.381111, 126.802245),
+      zoom: 15
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      body: GoogleMap(
+        mapType: MapType.hybrid,
+        initialCameraPosition: _lAngels,
+        onMapCreated: (GoogleMapController controller) {
+          _controller.complete(controller);
+        },
+      ),
+    );
+  }
 }
