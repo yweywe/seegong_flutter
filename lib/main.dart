@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:seegong_flutter/screens/LoginScreen.dart';
+import 'package:seegong_flutter/screens/ReservationResult.dart';
 import 'package:seegong_flutter/screens/SpaceListScreen.dart';
 import 'package:seegong_flutter/screens/Reservation.dart';
 import 'package:seegong_flutter/screens/SpaceSelect.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
         SpaceListScreen.routename: (context) => SpaceListScreen(),
         SpecificScreen.routename : (context) => SpecificScreen(),
         ReservationScreen.routename : (context) => ReservationScreen(),
+        ResultScreen.routename : (context) => ResultScreen(),
       },
     );
   }

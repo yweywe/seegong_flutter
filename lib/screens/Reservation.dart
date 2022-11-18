@@ -417,16 +417,20 @@ class _ReservationScreenState extends State<ReservationScreen> {
               ),
             ),
 
-            Container(
-              alignment: Alignment.center,
-              width: MediaQuery.of(context).size.width,
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
-                child: Text('예약 신청하기', style: TextStyle(fontSize: 30, letterSpacing: -1, fontWeight: FontWeight.w700),),
+            GestureDetector(
+              child: Container(
+                alignment: Alignment.center,
+                width: MediaQuery.of(context).size.width,
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
+                  child: Text('예약 신청하기', style: TextStyle(fontSize: 30, letterSpacing: -1, fontWeight: FontWeight.w700),),
+                ),
+                decoration: BoxDecoration(
+                    color: Colors.orange.withOpacity(0.6)
+                ),
               ),
-              decoration: BoxDecoration(
-                  color: Colors.orange.withOpacity(0.6)
-              ),
+              onTap: (){
+              },
             ),
             
           ],
