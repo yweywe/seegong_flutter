@@ -38,7 +38,7 @@ class SpaceListScreen extends StatelessWidget {
                 Flexible(
                   fit: FlexFit.tight,
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding : const EdgeInsets.all(8.0),
                     child:  TextField(
                       keyboardType: TextInputType.text,
                       cursorColor: Colors.black,

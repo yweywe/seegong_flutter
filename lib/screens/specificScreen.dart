@@ -616,6 +616,7 @@ class GMapState extends State<GMap> {
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
         },
+        myLocationButtonEnabled: false,
       ),
     );
   }
