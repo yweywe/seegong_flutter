@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:seegong_flutter/screens/Appbar.dart';
 import 'package:seegong_flutter/screens/NavigationMenu.dart';
+import 'package:seegong_flutter/screens/SpaceListScreen.dart';
+import 'package:seegong_flutter/screens/SpaceSelect.dart';
 
 class ReservationList extends StatelessWidget{
   const ReservationList({Key? key}) : super(key: key);
@@ -41,7 +43,9 @@ class ReservationList extends StatelessWidget{
                 itemBuilder: (context, idx){
                   return GestureDetector(
                     onTap: (){
-                      print("hello");
+                      // 일단 SpaceList로 이동
+                      // 추후 예약 결과 화면으로 수정 필요
+                      Navigator.pushNamed(context, SpaceListScreen.routename);
                     },
                     //{
                     //  Navigator.pushNamed(context, SpecificScreen.routename);
