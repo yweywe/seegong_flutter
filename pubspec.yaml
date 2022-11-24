@@ -40,6 +40,8 @@ dependencies:
   intl: ^0.17.0
   time_range: ^1.0.3
   url_launcher: ^6.1.6
+  firebase_core: ^2.3.0
+  firebase_database: ^10.0.6
 
 dev_dependencies:
   flutter_test:
