@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:seegong_flutter/screens/ReservationList.dart';
 
 /// 네비게이션 메뉴 표시 전용 위젯
 class NavigationMenu extends StatelessWidget {
@@ -51,7 +52,8 @@ class NavigationMenu extends StatelessWidget {
               leading: Icon(Icons.list),
               title: Text("예약내역"),
               onTap: (){
-                Navigator.pop(context);
+                Navigator.pushNamed(context, ReservationList.routename);
+                //Navigator.pop(context);
               },
             ),
             ListTile(
