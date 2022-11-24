@@ -1,3 +1,4 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:seegong_flutter/screens/Reservation.dart';
 import 'package:seegong_flutter/screens/ReservationResult.dart';
@@ -47,6 +48,27 @@ class LoginScreen extends StatelessWidget {
                         Navigator.pushNamed(context, SpaceSelect.routename);
                       },
                     ),
+
+                    ElevatedButton(onPressed: () async{
+                      DatabaseReference ref = FirebaseDatabase.instance.ref("SpaceSelect/SpaceName");
+                      await ref.set({
+                        "0" : {
+                          "name" : "강의실"
+                        },
+                        "1" : {
+                          "name" : "잔디구장"
+                        },
+                        "2" : {
+                          "name" : "연습실 학원"
+                        },
+                        "3" : {
+                          "name" : "풋살장"
+                        },
+                        "4" : {
+                          "name" : "모임터 카페"
+                        }
+                      });
+                    }, child: Text('세팅')),
                   ],
                 )
               ],
