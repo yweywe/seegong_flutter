@@ -1,0 +1,124 @@
+{
+  "project_info": {
+    "project_number": "395239320607",
+    "project_id": "seegong-d1d8c",
+    "storage_bucket": "seegong-d1d8c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:395239320607:android:4a545024c3992632fdf92a",
+        "android_client_info": {
+          "package_name": "com.seegong"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "395239320607-51prhuod0om7ktotoqoqqdh4b42o4sql.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.seegong",
+            "certificate_hash": "25fa68c66777b20da300c6a10505603851cbcf6c"
+          }
+        },
+        {
+          "client_id": "395239320607-9kt08c2pl1lc8fegsm43a4e0agioetj6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.seegong",
+            "certificate_hash": "775f338abd31cede8f31c9cfae97de3deaeda9a1"
+          }
+        },
+        {
+          "client_id": "395239320607-cmo2ph85v8tfckpamd3fq1spf8pta08m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.seegong",
+            "certificate_hash": "6d0926f05d79d5974864874af43b2b9e767ed075"
+          }
+        },
+        {
+          "client_id": "395239320607-hvc85k3kisi229kea3n73s2miipu2o6g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.seegong",
+            "certificate_hash": "af0a0db72ab22f67c01cd10b9a3e81c7bf2f3e4e"
+          }
+        },
+        {
+          "client_id": "395239320607-i7u2ofbsokkgt2g6ros5r1cn6hqv129s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.seegong",
+            "certificate_hash": "e3a4fa3982e2344ce2bdb27bc332104495213a79"
+          }
+        },
+        {
+          "client_id": "395239320607-ljphqdli9tihj0q1o5871tijaqpr3v1m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.seegong",
+            "certificate_hash": "8fc3350798efe7da5d6bc4ab6a4c526714ea3acd"
+          }
+        },
+        {
+          "client_id": "395239320607-rnq0imb9rglmsptgk4j6ols3i0d812tk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.seegong",
+            "certificate_hash": "9238531a15b0a316bef50dd29919c7c8db753309"
+          }
+        },
+        {
+          "client_id": "395239320607-317a6lmhf3gf6arq6u6mcaqrael48ate.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4kh3TCsEKNTXKA-TZCTLlDB6rfuUUk3k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "395239320607-317a6lmhf3gf6arq6u6mcaqrael48ate.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:395239320607:android:682f2a49e114879dfdf92a",
+        "android_client_info": {
+          "package_name": "org.tukorea.seegong_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "395239320607-317a6lmhf3gf6arq6u6mcaqrael48ate.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4kh3TCsEKNTXKA-TZCTLlDB6rfuUUk3k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "395239320607-317a6lmhf3gf6arq6u6mcaqrael48ate.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
