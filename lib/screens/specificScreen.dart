@@ -135,7 +135,7 @@ class _SpecificScreenState extends State<SpecificScreen> {
                           print(InitTimeEditngController.text);
                           print(EndTimeEditingController.text);
                         },
-                        child: TextIf( context, '시작 시간 선택', EndTimeEditingController, 15)
+                        child: TextIf( context, '종료 시간 선택', EndTimeEditingController, 15)
                       ),
                     ),
                   ],
@@ -611,7 +611,7 @@ class GMapState extends State<GMap> {
   Widget build(BuildContext context) {
     return new Scaffold(
       body: GoogleMap(
-        mapType: MapType.hybrid,
+        mapType: MapType.normal,
         initialCameraPosition: _lAngels,
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
