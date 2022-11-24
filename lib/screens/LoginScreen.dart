@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:seegong_flutter/screens/Reservation.dart';
+import 'package:seegong_flutter/screens/ReservationResult.dart';
 import 'package:seegong_flutter/screens/SpaceListScreen.dart';
 import 'SpaceSelect.dart';
 
@@ -39,6 +41,9 @@ class LoginScreen extends StatelessWidget {
                     ElevatedButton(
                       child: const Text('Google Login Button'),
                       onPressed: () {
+                        // Navigator.pushNamed(context, ResultScreen.routename);
+
+                        // Todo: 결과화면 제작 완료시 밑의 네비게이터로 전환
                         Navigator.pushNamed(context, SpaceSelect.routename);
                       },
                     ),
