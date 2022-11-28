@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return GetMaterialApp( //getXMaterialApp 추가->
       title: 'Seegong',
       theme: ThemeData(
         fontFamily: 'gsans',
