@@ -8,6 +8,7 @@ import 'package:seegong_flutter/screens/SpaceSelect.dart';
 import 'package:seegong_flutter/screens/specificScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'package:get/get.dart';
 
 void main() async{
 
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Seegong',
       theme: ThemeData(
         fontFamily: 'gsans',
