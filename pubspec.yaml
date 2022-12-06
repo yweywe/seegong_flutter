@@ -44,6 +44,7 @@ dependencies:
   firebase_core: ^2.3.0
   google_maps_flutter: ^2.2.1
   get: ^4.6.5
+  kakao_flutter_sdk: ^1.2.2
 
 dev_dependencies:
   flutter_test:
