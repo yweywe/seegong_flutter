@@ -20,6 +20,9 @@ def flutterVersionName = localProperties.getProperty('flutter.versionName')
 if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
+// Google Maps Api key
+def googleMapApiKey = localProperties.getProperty('google.map.key')
+def kakaoLoginApiKey = localProperties.getProperty('kakao.login.key')
 
 apply plugin: 'com.android.application'
 // START: FlutterFire Configuration
@@ -55,6 +58,8 @@ android {
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        manifestPlaceholders["googleMapApiKey"] = googleMapApiKey
+        manifestPlaceholders["kakaoLoginApiKey"] = kakaoLoginApiKey
     }
 
     buildTypes {

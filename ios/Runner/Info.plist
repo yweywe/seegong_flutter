@@ -29,6 +29,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
+			    <!-- Kakao Login -->
 				<string>kakaoe6488223bf1a9a5cc54920080dc26bdcd</string>
 			</array>
 		</dict>

@@ -39,6 +39,10 @@
               android:name="io.flutter.embedding.android.NormalTheme"
               android:resource="@style/NormalTheme"
               />
+            <meta-data
+                android:name="com.google.android.geo.API_KEY"
+                android:value="${googleMapApiKey}"
+                />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -54,7 +58,7 @@
                <category android:name="android.intent.category.BROWSABLE" />
 
                <!-- Redirect URI, "kakao${YOUR_NATIVE_APP_KEY}://oauth" 형식 -->
-               <data android:scheme="kakaoe6488223bf1a9a5cc54920080dc26bdcd" android:host="oauth"/>
+               <data android:scheme="kakao6488223bf1a9a5cc54920080dc26bdcd" android:host="oauth"/>
            </intent-filter>
        </activity>
 

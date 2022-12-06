@@ -7,16 +7,6 @@ import 'package:seegong_flutter/screens/SpaceListScreen.dart';
 import 'SpaceSelect.dart';
 import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
 
-void main() {
-  // 웹 환경에서 카카오 로그인을 정상적으로 완료하려면 runApp() 호출 전 아래 메서드 호출 필요
-  WidgetsFlutterBinding.ensureInitialized();
-
-  // runApp() 호출 전 Flutter SDK 초기화
-  KakaoSdk.init(
-    nativeAppKey: '6488223bf1a9a5cc54920080dc26bdcd',
-  );
-}
-
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
   @override
@@ -99,6 +89,7 @@ class LoginScreen extends StatelessWidget {
                         "3": {"name": "풋살장"},
                         "4": {"name": "모임터 카페"}
                       });
+                      Navigator.pushNamed(context, SpaceSelect.routename);
                     },
                     child: Text('세팅')),
               ],

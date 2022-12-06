@@ -9,6 +9,8 @@ import 'package:seegong_flutter/screens/specificScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:get/get.dart';
+import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
+import 'package:seegong_flutter/auth/keys.dart';
 
 void main() async{
 
@@ -16,11 +18,14 @@ void main() async{
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  KakaoSdk.init(
+    nativeAppKey: '$kakaoLoginApiKey',
+    // https://medium.com/podiihq/keeping-secret-keys-out-of-version-control-in-flutter-bcd2b1eb9c1b
+  );
 
   return runApp(MyApp());
 }
 final GlobalKey<ScaffoldState> _key = GlobalKey();
-
 
 class MyApp extends StatelessWidget {
 
