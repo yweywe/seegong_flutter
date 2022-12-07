@@ -40,15 +40,16 @@ class LoginScreen extends StatelessWidget {
                 ElevatedButton(
                   child: const Text('Kakao Login Button'),
                   onPressed: () async {
-                    // Navigator.pushNamed(context, ResultScreen.routename);
                     // 카카오 로그인 구현 예제
 
                     // 카카오톡 실행 가능 여부 확인
                     // 카카오톡 실행이 가능하면 카카오톡으로 로그인, 아니면 카카오계정으로 로그인
+                    var loginState = false;
                     if (await isKakaoTalkInstalled()) {
                       try {
                         await UserApi.instance.loginWithKakaoTalk();
                         print('카카오톡으로 로그인 성공');
+                        loginState = true;
                       } catch (error) {
                         print('카카오톡으로 로그인 실패 $error');
 
@@ -62,6 +63,7 @@ class LoginScreen extends StatelessWidget {
                         try {
                           await UserApi.instance.loginWithKakaoAccount();
                           print('카카오계정으로 로그인 성공');
+                          loginState = true;
                         } catch (error) {
                           print('카카오계정으로 로그인 실패 $error');
                         }
@@ -70,12 +72,16 @@ class LoginScreen extends StatelessWidget {
                       try {
                         await UserApi.instance.loginWithKakaoAccount();
                         print('카카오계정으로 로그인 성공');
+                        loginState = true;
                       } catch (error) {
                         print('카카오계정으로 로그인 실패 $error');
                       }
                     }
                     // Todo: 결과화면 제작 완료시 밑의 네비게이터로 전환
-                    Navigator.pushNamed(context, SpaceSelect.routename);
+                    if (loginState == true) {
+                      // Navigator.pushNamed(context, ResultScreen.routename);
+                      Navigator.pushNamed(context, SpaceSelect.routename);
+                    }
                   },
                 ),
                 ElevatedButton(
@@ -98,5 +104,46 @@ class LoginScreen extends StatelessWidget {
         )),
       ),
     );
+  }
+}
+
+abstract class SocialLogin {
+  Future<bool> login();
+  Future<bool> logout();
+}
+
+class KakaoLogin implements SocialLogin {
+  @override
+  Future<bool> login() async {
+    try {
+      bool isInstalled = await isKakaoTalkInstalled();
+      if (isInstalled) {
+        try {
+          await UserApi.instance.loginWithKakaoTalk();
+          return true;
+        } catch (e) {
+          return false;
+        }
+      } else {
+        try {
+          await UserApi.instance.loginWithKakaoAccount();
+          return true;
+        } catch (e) {
+          return false;
+        }
+      }
+    } catch (e) {
+      return false;
+    }
+  }
+
+  @override
+  Future<bool> logout() async {
+    try {
+      await UserApi.instance.unlink();
+      return true;
+    } catch (error) {
+      return false;
+    }
   }
 }
