@@ -612,7 +612,7 @@ class GMapState extends State<GMap> {
   Widget build(BuildContext context) {
     return new Scaffold(
       body: GoogleMap(
-        mapType: MapType.hybrid,
+        mapType: MapType.normal,
         initialCameraPosition: _lAngels,
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
