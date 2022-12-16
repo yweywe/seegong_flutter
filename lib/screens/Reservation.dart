@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:seegong_flutter/screens/Appbar.dart';
 import 'package:seegong_flutter/screens/NavigationMenu.dart';
+import 'package:seegong_flutter/screens/ReservationResult.dart';
 import 'package:seegong_flutter/screens/specificScreen.dart';
 
 
@@ -65,374 +66,601 @@ class _ReservationScreenState extends State<ReservationScreen> {
                           ),
                         ),
 
+
+
                         SizedBox(
                           height: 40,
                         ),
-                        GestureDetector(
-                            child: Text('예약 정보', style: TextStyle(fontSize: 20),),
-                          onTap: ()=>Navigator.pushNamed(context, SpecificScreen.routename),
-                        ),
-                        SizedBox(height: 3,),
-                        Container(width: MediaQuery.of(context).size.width, height: 3, color: Colors.black.withOpacity(0.4),),
-                        SizedBox(height: 3,),
 
-                        Row(
-                          children: [
-                            Container(
-                                width: size.width / 6.5,
-                                child: FittedBox(fit:BoxFit.scaleDown,child: Text('예약 날짜', style: TextStyle(fontSize: size.width / 30),))),
-                            Container(width: size.width / 30,),
-                            FittedBox(
-                              fit: BoxFit.fitWidth,
-                              child: Container(
-                                width:  size.width / 1.6,
-                                height: 30,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                  children: [
-                                    FittedBox(fit:BoxFit.scaleDown,child: Text('${args.DataTimeEditingController.text}', style: TextStyle(fontSize: size.width / 30),)),
-                                    FittedBox(fit:BoxFit.scaleDown,child: Text('${args.InitTimeEditngController.text}', style: TextStyle(fontSize: size.width / 30),)),
-                                    FittedBox(fit:BoxFit.scaleDown,child: Text('${args.EndTimeEditingController.text}', style: TextStyle(fontSize: size.width / 30),)),
-                                  ],
-                                ),),
-                            )
-                          ],
-                        ),
-
-                        Row(
-                          children: [
-                            Container(
-                                width: size.width / 6.5,
-                                child: FittedBox(fit:BoxFit.scaleDown,child: Text('예약 인원', style: TextStyle(fontSize: size.width / 30),))),
-                            Container(width: size.width / 30,),
-                            FittedBox(
-                              fit: BoxFit.fitWidth,
-                              child: Container(
-                                width:  size.width / 8,
-                                height: 30,
-                                child: ReservTextFiledWidget(controller: arg.NumberofPeople, HintText: '0'),),
-                            )
-                          ],
-                        ),
-                        SizedBox(height: 30,),
-
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text('예약자 정보', style: TextStyle(fontSize: 20),),
-                            Text('* 필수 입력', style: TextStyle(fontSize: 10, color: Colors.red),)
-                          ],
-                        ),
-                        SizedBox(height: 3,),
-                        Container(width: MediaQuery.of(context).size.width, height: 3, color: Colors.black.withOpacity(0.4),),
-                        SizedBox(height: 3,),
-                        Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(3.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                        Container(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                '예약 내용',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 18
+                                ),
+                              ),
+                              SizedBox(height: 9,),
+                              Row(
                                 children: [
-                                  Row(
-                                    children: [
-                                      Container(
-                                          width: size.width / 6.5,
-                                          child: FittedBox(fit:BoxFit.scaleDown,child: Text('예약자 *', style: TextStyle(fontSize: size.width / 30),))),
-                                      Container(width: size.width / 30,),
-                                      FittedBox(
-                                        fit: BoxFit.fitWidth,
-                                        child: Container(
-                                          width:  size.width / 1.6,
-                                          height: 30,
-                                          child: ReservTextFiledWidget(controller: arg.ReservationName, HintText: ''),),
+                                  Expanded(
+                                      flex: 2,
+                                      child: Text(
+                                        '장소 이름',
+                                        style: TextStyle(
+                                          color: Color(0xff434849),
+                                        ),
                                       )
-                                    ],
                                   ),
-                                  Container(height: 10,),
-
-                                  Row(
-                                    children: [
-                                      Container(
-                                          width: size.width / 6.5,
-                                          child: FittedBox(fit:BoxFit.scaleDown,child: Text('연락처 *', style: TextStyle(fontSize: size.width / 30),))),
-                                      Container(width: size.width / 30,),
-                                      FittedBox(
-                                        fit: BoxFit.fitWidth,
-                                        child: Container(
-                                          width:  size.width / 1.6,
-                                          height: 30,
-                                          child: ReservTextFiledWidget(controller: arg.PhoneNumber, HintText: ''),),
-                                      )
-                                    ],
-                                  ),
-                                  Container(height: 10,),
-
-
-                                  Row(
-                                    children: [
-                                      Container(
-                                          width: size.width / 6.5,
-                                          child: FittedBox(fit:BoxFit.scaleDown,child: Text('이메일 *', style: TextStyle(fontSize: size.width / 30),))),
-                                      Container(width: size.width / 30,),
-                                      FittedBox(
-                                        fit: BoxFit.fitWidth,
-                                        child: Container(
-                                          width:  size.width / 1.6,
-                                          height: 30,
-                                          child: ReservTextFiledWidget(controller: arg.Email, HintText: ''),),
-                                      )
-                                    ],
-                                  ),
-                                  Container(height: 10,),
-
-
-                                  Row(
-                                    children: [
-                                      Container(
-                                          width: size.width / 6.5,
-                                          child: FittedBox(fit:BoxFit.scaleDown,child: Text('사용목적 *', style: TextStyle(fontSize: size.width / 30),))),
-                                      Container(width: size.width / 30,),
-                                      FittedBox(
-                                        fit: BoxFit.fitWidth,
-                                        child: Container(
-                                          alignment: Alignment.bottomCenter,
-                                          width:  size.width / 1.6,
-                                          height: 45,
-                                          child: ReservTextFiledWidget(controller: arg.PurposeofUse, HintText: ''),),
-                                      )
-                                    ],
-                                  ),
-                                  Container(height: 10,),
-
-
-                                  Row(
-                                    children: [
-                                      Container(
-                                          width: size.width / 6.5,
-                                          child: FittedBox(fit:BoxFit.scaleDown,child: Text('요청사항  ', style: TextStyle(fontSize: size.width / 30),))),
-                                      Container(width: size.width / 30,),
-                                      FittedBox(
-                                        fit: BoxFit.fitWidth,
-                                        child: Container(
-                                          alignment: Alignment.bottomCenter,
-                                          height: 100,
-                                          width:  size.width / 1.6,
-                                          child: ReservTextFiledWidget(controller: arg.ReservaitonClientRequest, HintText: ''),),
-                                      )
-                                    ],
-                                  ),
-                                  //EditableText(controller: controller, focusNode: focusNode, style: style, cursorColor: cursorColor, backgroundCursorColor: backgroundCursorColor),
+                                  Expanded(
+                                      flex: 8,
+                                      child: Text(
+                                        '작은 천사들',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w700,
+                                            color: Color(0xff333333)
+                                        ),
+                                      ))
                                 ],
                               ),
-                            )
+                              SizedBox(height: 6,),
+                              Row(
+                                children: [
+                                  Expanded(
+                                      flex: 2,
+                                      child: Text(
+                                        '가격',
+                                        style: TextStyle(
+                                            color: Color(0xff434849)
+                                        ),
+                                      )
+                                  ),
+                                  Expanded(
+                                      flex: 8,
+                                      child: Text(
+                                        '300,000',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w700,
+                                            color: Color(0xff333333)
+                                        ),
+                                      ))
+
+                                ],
+                              ),
+                              SizedBox(height: 6,),
+
+                              Row(
+                                children: [
+                                  Expanded(
+                                      flex: 2,
+                                      child: Text(
+                                        '시간',
+                                        style: TextStyle(
+                                            color: Color(0xff434849)
+                                        ),
+                                      )
+                                  ),
+                                  Expanded(
+                                      flex: 8,
+                                      child: Text(
+                                        '2시간',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w700,
+                                            color: Color(0xff333333)
+                                        ),
+                                      ))
+
+                                ],
+                              ),
+                              SizedBox(height: 6,),
+
+                              Row(
+                                children: [
+                                  Expanded(
+                                      flex: 2,
+                                      child: Text(
+                                        '예약 날짜',
+                                        style: TextStyle(
+                                            color: Color(0xff434849)
+                                        ),
+                                      )
+                                  ),
+                                  Expanded(
+                                      flex: 8,
+                                      child: Text(
+                                        '2022.12.25 (토)',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w700,
+                                            color: Color(0xff333333)
+                                        ),
+                                      ))
+                                ],
+                              ),
+                              SizedBox(height: 6,),
+
+
+
+                              Row(
+                                children: [
+                                  Expanded(
+                                      flex: 2,
+                                      child: Text(
+                                        '예약 인원',
+                                        style: TextStyle(
+                                            color: Color(0xff434849)
+                                        ),
+                                      )
+                                  ),
+                                  Expanded(
+                                      flex: 8,
+                                      child: Text(
+                                        '2명',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w700,
+                                            color: Color(0xff333333)
+                                        ),
+                                      ))
+                                ],
+                              ),
+                              SizedBox(height: 6,),
+                            ],
+                          ),
+                        ),
+
+                        SizedBox(height: 20,),
+
+
+
+
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              '예약자 정보',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 18
+                              ),
+                            ),
+                            SizedBox(height: 15,),
+
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                  flex: 2,
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        '이름'
+                                      ),
+                                      SizedBox(width: 3,),
+                                      Text(
+                                        '*',
+                                        style: TextStyle(
+                                          color: Colors.red
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+
+                                Expanded(
+                                  flex: 8,
+                                  child: Container(
+                                    height: 35,
+                                    child: TextField(
+                                      decoration: InputDecoration(
+                                        border: OutlineInputBorder(),
+                                        hintText: '이름을 입력하세요',
+                                        hintStyle: TextStyle(
+                                          fontSize: 10,
+                                          color: Color(0xff333333).withOpacity(0.3),
+                                        )
+                                      ),
+                                    ),
+                                  )
+
+                                )
+                              ],
+                            ),
+                            SizedBox(height: 8,),
+
+                            //연락처 Textfiled
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                  flex: 2,
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                          '연락처'
+                                      ),
+                                      SizedBox(width: 3,),
+                                      Text(
+                                        '*',
+                                        style: TextStyle(
+                                            color: Colors.red
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+
+                                Expanded(
+                                    flex: 8,
+                                    child: Container(
+                                      height: 35,
+                                      child: TextField(
+                                        decoration: InputDecoration(
+                                            border: OutlineInputBorder(),
+                                            hintText: '연락처를 입력하세요',
+                                            hintStyle: TextStyle(
+                                              fontSize: 10,
+                                              color: Color(0xff333333).withOpacity(0.3),
+                                            )
+                                        ),
+                                      ),
+                                    )
+
+                                )
+                              ],
+                            ),
+                            SizedBox(height: 8,),
+
+
+
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                  flex: 2,
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                          '이메일'
+                                      ),
+                                      SizedBox(width: 3,),
+                                      Text(
+                                        '*',
+                                        style: TextStyle(
+                                            color: Colors.red
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+
+                                Expanded(
+                                    flex: 8,
+                                    child: Container(
+                                      height: 35,
+                                      child: TextField(
+                                        decoration: InputDecoration(
+                                            border: OutlineInputBorder(),
+                                            hintText: '이메일을 입력하세요',
+                                            hintStyle: TextStyle(
+                                              fontSize: 10,
+                                              color: Color(0xff333333).withOpacity(0.3),
+                                            )
+                                        ),
+                                      ),
+                                    )
+
+                                )
+                              ],
+                            ),
+                            SizedBox(height: 8,),
+
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                  flex: 2,
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                          '사용목적'
+                                      ),
+                                      SizedBox(width: 3,),
+                                      Text(
+                                        '*',
+                                        style: TextStyle(
+                                            color: Colors.red
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+
+                                Expanded(
+                                    flex: 8,
+                                    child: Container(
+                                      height: 35,
+                                      child: TextField(
+                                        decoration: InputDecoration(
+                                            border: OutlineInputBorder(),
+                                            hintText: '사용목적을 입력하세요',
+                                            hintStyle: TextStyle(
+                                              fontSize: 10,
+                                              color: Color(0xff333333).withOpacity(0.3),
+                                            )
+                                        ),
+                                      ),
+                                    )
+
+                                )
+                              ],
+                            ),
+                            SizedBox(height: 8,),
+
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                  flex: 2,
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                          '요청사항'
+                                      ),
+                                      SizedBox(width: 3,),
+                                      Text(
+                                        ' ',
+                                        style: TextStyle(
+                                            color: Colors.red
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+
+                                Expanded(
+                                    flex: 8,
+                                    child: TextField(
+                                      maxLines: 3,
+                                      decoration: InputDecoration(
+                                          border: OutlineInputBorder(),
+                                          hintText: '요청사항을 입력하세요',
+                                          hintStyle: TextStyle(
+                                            fontSize: 10,
+                                            color: Color(0xff333333).withOpacity(0.3),
+                                          )
+                                      ),
+                                    )
+
+                                )
+                              ],
+                            ),
+                            SizedBox(height: 35,)
                           ],
-                        )
+                        ),
+
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              '공간 정보',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 18
+                              ),
+                            ),
+                            SizedBox(height: 15,),
+
+
+                            Row(
+                              children: [
+                                Expanded(
+                                    flex: 2,
+                                    child: Text(
+                                      '공간 상호',
+                                      style: TextStyle(
+                                        color: Color(0xff434849),
+                                      ),
+                                    )
+                                ),
+                                Expanded(
+                                    flex: 8,
+                                    child: Text(
+                                      '공간 상호를 입려갛세요',
+                                      style: TextStyle(
+                                          color: Color(0xff999999)
+                                      ),
+                                    ))
+                              ],
+                            ),
+                            SizedBox(height: 8,),
+
+
+                            Row(
+                              children: [
+                                Expanded(
+                                    flex: 2,
+                                    child: Text(
+                                      '대표자명',
+                                      style: TextStyle(
+                                        color: Color(0xff434849),
+                                      ),
+                                    )
+                                ),
+                                Expanded(
+                                    flex: 8,
+                                    child: Text(
+                                      '엄영욱',
+                                      style: TextStyle(
+                                          color: Color(0xff999999)
+                                      ),
+                                    ))
+                              ],
+                            ),
+                            SizedBox(height: 8,),
+
+
+
+                            Row(
+                              children: [
+                                Expanded(
+                                    flex: 2,
+                                    child: Text(
+                                      '소재지',
+                                      style: TextStyle(
+                                        color: Color(0xff434849),
+                                      ),
+                                    )
+                                ),
+                                Expanded(
+                                    flex: 8,
+                                    child: Text(
+                                      '시흥시 어딘가',
+                                      style: TextStyle(
+                                          color: Color(0xff999999)
+                                      ),
+                                    ))
+                              ],
+                            ),
+                            SizedBox(height: 8,),
+
+
+                            Row(
+                              children: [
+                                Expanded(
+                                    flex: 2,
+                                    child: Text(
+                                      '사업자 번호',
+                                      style: TextStyle(
+                                        color: Color(0xff434849),
+                                      ),
+                                    )
+                                ),
+                                Expanded(
+                                    flex: 8,
+                                    child: Text(
+                                      '1234',
+                                      style: TextStyle(
+                                          color: Color(0xff999999)
+                                      ),
+                                    ))
+                              ],
+                            ),
+                            SizedBox(height: 8,),
+
+                            Row(
+                              children: [
+                                Expanded(
+                                    flex: 2,
+                                    child: Text(
+                                      '연락처',
+                                      style: TextStyle(
+                                        color: Color(0xff434849),
+                                      ),
+                                    )
+                                ),
+                                Expanded(
+                                    flex: 8,
+                                    child: Text(
+                                      '1234-1234-1423',
+                                      style: TextStyle(
+                                          color: Color(0xff999999)
+                                      ),
+                                    ))
+                              ],
+                            ),
+                            SizedBox(height: 8,),
+                          ],
+                        ),
+                        SizedBox(height: 35,),
+
+
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              '환불시 주의사항',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 18
+                              ),
+                            ),
+                            SizedBox(height: 10,),
+
+                            Row(
+                              children: [
+                                Text(
+                                  '3일전 환불 가능, 2일전 80%, 하루전 50%, 당일 환불 불가',
+                                  style: TextStyle(
+                                      color: Color(0xff999999)
+                                  ),
+                                )
+                              ],
+                            ),
+                          ],
+                        ),SizedBox(height: 30,),
+
+
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              '예약시 주의사항',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 18
+                              ),
+                            ),
+                            SizedBox(height: 10,),
+
+                            Row(
+                              children: [
+                                Flexible(
+                                  child: Text(
+                                    '이용당일 이후 관련사항은 시설관리자에게 직접 문의 바랍니다. 또한 결제이후 취소시, 시설 관리자와 문의 이후 취소 가능합니다.',
+                                    style: TextStyle(
+                                        color: Color(0xff999999)
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                            SizedBox(height: 35,),
+
+                          ],
+                        ),
+
+
+                        Container(
+                          padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
+                          height: 45,
+                          width: double.infinity,
+                          child: ElevatedButton(onPressed: (){
+                            Navigator.pushNamed(context, ResultScreen.routename);
+                          },
+                              child: Text('예약 신청하기',
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    color: Colors.white
+                                ),),
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: Color(0xff033780)
+                              )
+                          ),
+                        ),
+
+
                       ],
                     ),
                   ),
-                  SizedBox(height: 30,),
-                  Column(
-                    children: [
-                      Container(
-                        alignment: Alignment.centerLeft,
-                        width: MediaQuery.of(context).size.width,
-                        height: 40,
-                        child: Padding(
-                          padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
-                          child: Text('공간 정보', style: TextStyle(fontSize: size.width / 25, letterSpacing: -1),),
-                        ),
-                        decoration: BoxDecoration(
-                            color: Colors.black.withOpacity(0.5)
-                        ),
-                      ),
 
-                      Container(
-                        alignment: Alignment.centerLeft,
-                        width: MediaQuery.of(context).size.width,
-                        child: Padding(
-                          padding: const EdgeInsets.fromLTRB(25, 10, 25, 10),
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  Expanded(
-                                    flex: 2,
-                                      child: Container(
-                                        alignment: AlignmentDirectional.centerEnd,
-                                          child: Text('공간 상호', style: TextStyle(fontSize: SmallFontSize, letterSpacing: -1),))),
-                                  Expanded(child: Container(),flex: 1,),
-                                  Expanded(
-                                    flex: 7,
-                                      child: Text('${t1.SpaceName}', style: TextStyle(fontSize: SmallFontSize, letterSpacing: -1),)),
-
-                                ],
-                              ), SizedBox(height: 10,),
-
-
-
-                              Row(
-                                children: [
-                                  Expanded(
-                                      flex: 2,
-                                      child: Container(
-                                          alignment: AlignmentDirectional.centerEnd,
-                                          child: Text('공간 상호', style: TextStyle(fontSize: SmallFontSize, letterSpacing: -1),))),
-                                  Expanded(child: Container(),flex: 1,),
-                                  Expanded(
-                                      flex: 7,
-                                      child: Text('${t1.SpaceOwnerName}', style: TextStyle(fontSize: SmallFontSize, letterSpacing: -1),)),
-
-                                ],
-                              ), SizedBox(height: 15,),
-
-                              Row(
-                                children: [
-                                  Expanded(
-                                      flex: 2,
-                                      child: Container(
-                                          alignment: AlignmentDirectional.centerEnd,
-                                          child: Text('소재지', style: TextStyle(fontSize: SmallFontSize, letterSpacing: -1),))),
-                                  Expanded(child: Container(),flex: 1,),
-                                  Expanded(
-                                      flex: 7,
-                                      child: FittedBox(
-                                        fit: BoxFit.fitWidth,
-                                          child: Text('${t1.SpaceLocation}', style: TextStyle(fontSize: SmallFontSize, letterSpacing: -1),))),
-
-                                ],
-                              ), SizedBox(height: 15,),
-
-
-
-                              Row(
-                                children: [
-                                  Expanded(
-                                      flex: 2,
-                                      child: Container(
-                                          alignment: AlignmentDirectional.centerEnd,
-                                          child: Text('사업자 번호', style: TextStyle(fontSize: SmallFontSize, letterSpacing: -1),))),
-                                  Expanded(child: Container(),flex: 1,),
-                                  Expanded(
-                                      flex: 7,
-                                      child: Text('${t1.SpaceOwnerCompanyNumber}', style: TextStyle(fontSize: SmallFontSize, letterSpacing: -1),)),
-
-                                ],
-                              ), SizedBox(height: 15,),
-
-
-
-                              Row(
-                                children: [
-                                  Expanded(
-                                      flex: 2,
-                                      child: Container(
-                                          alignment: AlignmentDirectional.centerEnd,
-                                          child: Text('연락처', style: TextStyle(fontSize: SmallFontSize, letterSpacing: -1),))),
-                                  Expanded(child: Container(),flex: 1,),
-                                  Expanded(
-                                      flex: 7,
-                                      child: Text('${t1.SpaceOnwerCompanyPhoneNumber}', style: TextStyle(fontSize: SmallFontSize, letterSpacing: -1),)),
-
-                                ],
-                              ), SizedBox(height: 15,),
-
-                            ],
-                          ),
-                        ),
-                        decoration: BoxDecoration(
-                            color: Colors.black.withOpacity(0.1)
-                        ),
-                      ),
-                    ],
-                  ),
-
-                  Column(
-                    children: [
-                      Container(
-                        alignment: Alignment.centerLeft,
-                        width: MediaQuery.of(context).size.width,
-                        height: 40,
-                        child: Padding(
-                          padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
-                          child: Text('예약시 주의사항', style: TextStyle(fontSize: size.width / 25, letterSpacing: -1),),
-                        ),
-                        decoration: BoxDecoration(
-                            color: Colors.black.withOpacity(0.5)
-                        ),
-                      ),
-
-                      Container(
-                        alignment: Alignment.centerLeft,
-                        width: MediaQuery.of(context).size.width,
-                        child: Padding(
-                          padding: const EdgeInsets.fromLTRB(25, 10, 25, 30),
-                          child: Column(
-                            children: [
-                              Text('${AlertMessageFromSeegong}', style: TextStyle(fontSize: SmallFontSize, letterSpacing: -1),), SizedBox(height: 10,),
-                            ],
-                          ),
-                        ),
-                        decoration: BoxDecoration(
-                            color: Colors.black.withOpacity(0.1)
-                        ),
-                      ),
-                    ],
-                  ),
-
-                  Column(
-                    children: [
-                      Container(
-                        alignment: Alignment.centerLeft,
-                        width: MediaQuery.of(context).size.width,
-                        height: 40,
-                        child: Padding(
-                          padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
-                          child: Text('환불 규정 안내', style: TextStyle(fontSize: size.width / 25, letterSpacing: -1),),
-                        ),
-                        decoration: BoxDecoration(
-                            color: Colors.black.withOpacity(0.5)
-                        ),
-                      ),
-
-                      Container(
-                        alignment: Alignment.centerLeft,
-                        width: MediaQuery.of(context).size.width,
-                        child: Padding(
-                          padding: const EdgeInsets.fromLTRB(25, 10, 25, 10),
-                          child: Column(
-                            children: [
-                              Text('${RefundPolicyInformation}', style: TextStyle(fontSize: SmallFontSize, letterSpacing: -1),), SizedBox(height: 10,),
-                            ],
-                          ),
-                        ),
-                        decoration: BoxDecoration(
-                            color: Colors.black.withOpacity(0.1)
-                        ),
-                      ),
-                    ],
-                  ),
 
 
                 ],
               ),
             ),
 
-            GestureDetector(
-              child: Container(
-                alignment: Alignment.center,
-                width: MediaQuery.of(context).size.width,
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
-                  child: Text('예약 신청하기', style: TextStyle(fontSize: 30, letterSpacing: -1, fontWeight: FontWeight.w700),),
-                ),
-                decoration: BoxDecoration(
-                    color: Colors.orange.withOpacity(0.6)
-                ),
-              ),
-              onTap: (){
-              },
-            ),
-            
           ],
 
 

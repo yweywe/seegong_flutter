@@ -3,6 +3,7 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:seegong_flutter/etc/color.dart';
 import 'package:seegong_flutter/etc/shadow.dart';
 import 'package:seegong_flutter/screens/Appbar.dart';
 import 'package:seegong_flutter/screens/Reservation.dart';
@@ -70,32 +71,58 @@ class _SpecificScreenState extends State<SpecificScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              '${t1.SpaceName}', // 장소 명
+                              '${t1.SpaceName}', // 작은 천사들 교육장 / 장소 명
                               style: TextStyle(
+                                color: Color(0xff333333),
                                 fontSize: 20,
-                                fontWeight: FontWeight.w400,
+                                fontWeight: FontWeight.w700,
                                 letterSpacing: -1.5
                               ),
                             ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            //위
                             Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                Row(
+                                  children: [
+                                    Icon(
+                                      Icons.location_on,
+                                      color: Color(0xff033780),
+                                    ),
+                                    SizedBox(width: 3,),
+                                    Text(
+                                      '경기 고양시 일산동구 위시티4로 45 3층',
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        color: Color(0xff666666)
+                                      ),
+                                    )
+                                  ],
+                                ),
+
                                 Row(
                                   children: [
                                     Icon(
                                       Icons.call,
                                       color: Color(0xff033780),
+                                    ),
+                                    SizedBox(width: 3,),
+
+                                    Text(
+                                      '010-0000-0000',
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          color: Color(0xff666666)
+                                      ),
                                     )
                                   ],
                                 )
+
                               ],
                             ),
-                            Text(
-                              '${t1.Spaceintroduction}',
-                              style: TextStyle(
-                                color: Colors.black.withOpacity(0.3),
-                                fontSize: 12,
-                              ),
-                            )
                           ],
                         ),
 
@@ -104,17 +131,12 @@ class _SpecificScreenState extends State<SpecificScreen> {
                     SizedBox(height: 15,),
 
 
-
-                    Container(
-                      width: double.infinity,
-                      height: 3,
-                      color: Colors.black.withOpacity(0.3),
-                    ),
                     SizedBox(height: 5,),
+
                     Row(
                       children: [
                         Expanded(
-                          flex: 1,
+                          flex: 100,
                           child: GestureDetector(
                             onTap: (){
                               SpecificCalenderView(context); // 날짜 선택
@@ -122,9 +144,9 @@ class _SpecificScreenState extends State<SpecificScreen> {
                             child: TextIf(context, '희망 날짜', DataTimeEditingController, 15)
                           ),
                         ),
-
+                        Expanded(flex: 5, child: SizedBox()),
                         Expanded(
-                          flex: 1,
+                          flex: 100,
                           child: GestureDetector(
                             onTap: (){
                               test(context);
@@ -132,9 +154,9 @@ class _SpecificScreenState extends State<SpecificScreen> {
                             child: TextIf( context, '시작 시간 선택', InitTimeEditngController, 15)
                           ),
                         ),
-
+                        Expanded(flex: 5, child: SizedBox()),
                         Expanded(
-                          flex: 1,
+                          flex: 100,
                           child: GestureDetector(
                             onTap: (){
                               print(InitTimeEditngController.text);
@@ -151,163 +173,195 @@ class _SpecificScreenState extends State<SpecificScreen> {
                 ),
 
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('오시는 길',
                     style: TextStyle(
-                      fontSize: 25,
+                      fontSize: 18,
                       fontWeight: FontWeight.w700,
-                      letterSpacing: -1.4
+                      letterSpacing: -2,
+                      color: mainTextColor
                     ),),
                     SizedBox(height: 10,),
-
                     //구글 맵 들어갈 자리
                     Container(
                       width: MediaQuery.of(context).size.width,
-                      height: 350,
+                      height: 200,
                       child: GMap(),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                       //color: Colors.black,
                     ),
                     SizedBox(height: 40,),
 
+
                     Container(
-                      padding: EdgeInsets.all(3),
                       alignment: Alignment.topLeft,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('공간 소개'),
-                          SizedBox(height: 3,),
-                          Container(width: MediaQuery.of(context).size.width, height: 3, color: Colors.black.withOpacity(0.4),),
-                          SizedBox(height: 3,),
-                          Row(
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Padding(
-                                padding: const EdgeInsets.all(6.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-
-                                  children: [
-                                    Text('${t1.Spaceintroduction}'),
-                                    SizedBox(height: 3,),
-                                    Row(
-                                      children: [
-                                        Text('영업시간 '),
-                                        Text('${t1.OpeningsHours}'),
-                                      ],
-                                    ),
-                                    SizedBox(height: 3,),
-
-                                    Row(
-                                      children: [
-                                        Text('휴무일 '),
-                                        Text('${t1.Holiday}'),
-                                      ],
-                                    ),
-
-
-                                  ],
+                              Text(
+                                '공간 소개',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 18
                                 ),
-                              )
+                              ),
+                              SizedBox(height: 10,),
 
+                              Row(
+                                children: [
+                                  Expanded(
+                                      flex: 2,
+                                      child: Text(
+                                        '한줄 소개',
+                                        style: TextStyle(
+                                          color: Color(0xff434849),
+                                        ),
+                                      )
+                                  ),
+                                  Expanded(
+                                      flex: 8,
+                                      child: Text(
+                                        '회의실 혹은 강의실로 사용 할 수 있습니다.',
+                                        style: TextStyle(
+                                            color: Color(0xff999999)
+                                        ),
+                                      ))
+                                ],
+                              ),
+                              SizedBox(height: 3,),
 
+                              Row(
+                                children: [
+                                  Expanded(
+                                      flex: 2,
+                                      child: Text(
+                                        '영업시간',
+                                        style: TextStyle(
+                                            color: Color(0xff434849)
+                                        ),
+                                      )
+                                  ),
+                                  Expanded(
+                                      flex: 8,
+                                      child: Text(
+                                        '09:00 ~ 19:00',
+                                        style: TextStyle(
+                                            color: Color(0xff999999)
+                                        ),
+                                      ))
+
+                                ],
+                              ),
+                              SizedBox(height: 3,),
+                              Row(
+                                children: [
+                                  Expanded(
+                                      flex: 2,
+                                      child: Text(
+                                        '휴무일',
+                                        style: TextStyle(
+                                            color: Color(0xff434849)
+                                        ),
+                                      )
+                                  ),
+                                  Expanded(
+                                      flex: 8,
+                                      child: Text(
+                                        '주말 휴무',
+                                        style: TextStyle(
+                                            color: Color(0xff999999)
+                                        ),
+                                      ))
+
+                                ],
+                              ),
                             ],
-                          ), SizedBox(height: 20,),
-                          Text('시설 안내'),
-                          SizedBox(height: 3,),
-                          Container(width: MediaQuery.of(context).size.width, height: 3, color: Colors.black.withOpacity(0.4),),
-                          SizedBox(height: 3,),
-                          Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(6.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                          ), SizedBox(height: 30,),
 
-                                  children: [
-                                    Text('${t1.RoomItem}'),
-                                    SizedBox(height: 3,),
-                                  ],
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                '환불시 주의사항',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 18
                                 ),
-                              )
+                              ),
+                              SizedBox(height: 10,),
+
+                              Row(
+                                children: [
+                                  Text(
+                                    '3일전 환불 가능, 2일전 80%, 하루전 50%, 당일 환불 불가',
+                                    style: TextStyle(
+                                        color: Color(0xff999999)
+                                    ),
+                                  )
+                                ],
+                              ),
                             ],
                           ),SizedBox(height: 30,),
 
 
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                '예약시 주의사항',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 18
+                                ),
+                              ),
+                              SizedBox(height: 10,),
+
+                              Row(
+                                children: [
+                                  Flexible(
+                                    child: Text(
+                                      '이용당일 이후 관련사항은 시설관리자에게 직접 문의 바랍니다. 또한 결제이후 취소시, 시설 관리자와 문의 이후 취소 가능합니다.',
+                                      style: TextStyle(
+                                          color: Color(0xff999999)
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                              SizedBox(height: 20,),
+
+                            ],
+                          ),
                         ],
                       ),
                     ),
-
-
-
                   ],
                 ),
-
-
-
-
-
               ],
             ),
           ),
 
-
-
-          Column(
-            children: [
-              Container(
-                alignment: Alignment.centerLeft,
-                width: MediaQuery.of(context).size.width,
-                height: 40,
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
-                  child: Text('예약시 주의사항'),
-                ),
-                decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.5)
-                ),
-              ),
-
-              Container(
-                alignment: Alignment.centerLeft,
-                width: MediaQuery.of(context).size.width,
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(25, 30, 25, 30),
-                  child: Text('$AlertMessageFromSeegong'),
-                ),
-                decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.1)
-                ),
-              ),
-            ],
-          ),
-
-          Column(
-            children: [
-              Container(
-                alignment: Alignment.centerLeft,
-                width: MediaQuery.of(context).size.width,
-                height: 40,
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
-                  child: Text('예약시 주의사항'),
-                ),
-                decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.5)
-                ),
-              ),
-
-              Container(
-                alignment: Alignment.centerLeft,
-                width: MediaQuery.of(context).size.width,
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(25, 30, 25, 30),
-                  child: Text('$RefundPolicyInformation'),
-                ),
-                decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.1)
-                ),
-              ),
-            ],
+          Container(
+            padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
+            height: 45,
+            child: ElevatedButton(onPressed: (){
+              Navigator.pushNamed(context, ReservationScreen.routename);
+            },
+                child: Text('예약하기',
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.white
+                ),),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color(0xff033780)
+              )
+            ),
           ),
 
           Padding(
@@ -562,12 +616,20 @@ class SpecificParameter {
 TextIf(BuildContext context, String str, TextEditingController dtfm, double size) {
   if (dtfm.text == "") {
     return Container(
+      height: 45,
       alignment: Alignment.center,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(5),
+        border: Border.all(
+          width: 1,
+          color: Color(0xff999999),
+        )
+      ),
       child: Text(
           '$str',
           style: TextStyle(
               fontSize: 16,
-              color: Colors.black.withOpacity(0.4)
+              color: Color(0xff999999),
 
           )
       ),
@@ -575,13 +637,24 @@ TextIf(BuildContext context, String str, TextEditingController dtfm, double size
   }
   else {
     return Container(
+      height: 45,
+
       alignment: Alignment.center,
       child: Text(
         '${dtfm.text}',
         style: TextStyle(
           fontSize: size,
-          color: Colors.black.withOpacity(0.8),
+          color: Color(0xff428AF0),
         ),
+      ),
+
+      decoration: BoxDecoration(
+        color: Color(0xff0057D0).withOpacity(0.1),
+          borderRadius: BorderRadius.circular(5),
+          border: Border.all(
+            width: 1,
+            color: Color(0xff428AF0),
+          )
       ),
     );
   }
