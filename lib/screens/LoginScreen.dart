@@ -1,14 +1,17 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:seegong_flutter/kakao_auth_module.dart';
 import 'package:seegong_flutter/screens/Reservation.dart';
 import 'package:seegong_flutter/screens/ReservationResult.dart';
 import 'package:seegong_flutter/screens/SpaceListScreen.dart';
+import 'package:seegong_flutter/screens/SpaceSelect.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-import 'SpaceSelect.dart';
-
+import 'package:flutter/services.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+  final kakaoAuth = KakaoAuthModule(KakaoLogin());
+
+  LoginScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,15 +43,29 @@ class LoginScreen extends StatelessWidget {
                       // TODO Add Google login button
                       // TODO Follow Google's design guide
                     ),
+                    /*Image.network(
+                        viewModel.user?.kakaoAccount?.profile?.profileImageUrl ?? ''),
+                    Text(
+                      '${viewModel.isLogined}',
+                      style: Theme.of(context).textTheme.headline4,
+                    ),*/
                     ElevatedButton(
-                      child: const Text('Google Login Button'),
-                      onPressed: () {
-                        // Navigator.pushNamed(context, ResultScreen.routename);
-
-                        // Todo: 결과화면 제작 완료시 밑의 네비게이터로 전환
-                        Navigator.pushNamed(context, SpaceSelect.routename);
+                      onPressed: () async {
+                        await kakaoAuth.login();
+                        //setState(() {});
+                        if(kakaoAuth.isLogined){
+                          Navigator.pushNamed(context, SpaceSelect.routename);
+                        }
                       },
-                    ),
+                      child: const Text('Login'),
+                    ),/*
+                    ElevatedButton(
+                      onPressed: () async {
+                        await viewModel.logout();
+                        //setState(() {});
+                      },
+                      child: const Text('Logout'),
+                    ),*/
 
                     ElevatedButton(onPressed: () async{
                       DatabaseReference ref = FirebaseDatabase.instance.ref("SpaceSelect/SpaceName");
@@ -69,6 +86,7 @@ class LoginScreen extends StatelessWidget {
                           "name" : "모임터 카페"
                         }
                       });
+                      Navigator.pushNamed(context, SpaceSelect.routename);
                     }, child: Text('세팅')),
                   ],
                 )
