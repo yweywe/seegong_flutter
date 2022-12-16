@@ -28,12 +28,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Seegong',
       theme: ThemeData(
-        fontFamily: 'gsans',
+        fontFamily: 'Pretendard',
         primaryColor: Colors.white,
       ),
       initialRoute: '/',
       routes: {
-        '/':(context) => LoginScreen(),
+        '/':(context) => SpecificScreen(),
         SpaceSelect.routename: (context) => SpaceSelect(),
         SpaceListScreen.routename: (context) => SpaceListScreen(),
         SpecificScreen.routename : (context) => SpecificScreen(),

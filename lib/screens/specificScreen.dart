@@ -45,103 +45,111 @@ class _SpecificScreenState extends State<SpecificScreen> {
       body: ListView(
         children: [
           Container(
-            padding: EdgeInsets.all(20),
+            width: double.infinity,
+            height: 240,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    fit: BoxFit.fill,
+                    image: AssetImage('${t1.imgurl}')
+                )
+            ),
+          ),
+          SizedBox(height: 15,),
+          Padding(
+            padding: const EdgeInsets.all(20.0),
             child: Column(
               children: [
-                SizedBox(
-                  height: 30,
-                ),
-                //장소 사진에 대해서...
-                Container(
-                  width: double.infinity,
-                  height: 300,
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadowVar
-                    ],
-                    borderRadius: BorderRadius.circular(10),
-                    image: DecorationImage(
-                      fit: BoxFit.fill,
-                      image: AssetImage('${t1.imgurl}')
-                    )
-                  ),
-                ),
-                SizedBox(height: 10,),
 
                 //장소 명, 장소 소개
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                Column(
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text(
-                          '${t1.SpaceName}',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w400,
-                            letterSpacing: -1.5
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              '${t1.SpaceName}', // 장소 명
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w400,
+                                letterSpacing: -1.5
+                              ),
+                            ),
+                            Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Icon(
+                                      Icons.call,
+                                      color: Color(0xff033780),
+                                    )
+                                  ],
+                                )
+                              ],
+                            ),
+                            Text(
+                              '${t1.Spaceintroduction}',
+                              style: TextStyle(
+                                color: Colors.black.withOpacity(0.3),
+                                fontSize: 12,
+                              ),
+                            )
+                          ],
+                        ),
+
+                      ],
+                    ),
+                    SizedBox(height: 15,),
+
+
+
+                    Container(
+                      width: double.infinity,
+                      height: 3,
+                      color: Colors.black.withOpacity(0.3),
+                    ),
+                    SizedBox(height: 5,),
+                    Row(
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: GestureDetector(
+                            onTap: (){
+                              SpecificCalenderView(context); // 날짜 선택
+                            },
+                            child: TextIf(context, '희망 날짜', DataTimeEditingController, 15)
                           ),
                         ),
 
-                        Text(
-                          '${t1.Spaceintroduction}',
-                          style: TextStyle(
-                            color: Colors.black.withOpacity(0.3),
-                            fontSize: 12,
+                        Expanded(
+                          flex: 1,
+                          child: GestureDetector(
+                            onTap: (){
+                              test(context);
+                            },
+                            child: TextIf( context, '시작 시간 선택', InitTimeEditngController, 15)
                           ),
-                        )
+                        ),
+
+                        Expanded(
+                          flex: 1,
+                          child: GestureDetector(
+                            onTap: (){
+                              print(InitTimeEditngController.text);
+                              print(EndTimeEditingController.text);
+                            },
+                            child: TextIf( context, '종료 시간 선택', EndTimeEditingController, 15)
+                          ),
+                        ),
                       ],
                     ),
 
-                  ],
-                ),
-                SizedBox(height: 15,),
-
-
-
-                Container(
-                  width: double.infinity,
-                  height: 3,
-                  color: Colors.black.withOpacity(0.3),
-                ),
-                SizedBox(height: 5,),
-                Row(
-                  children: [
-                    Expanded(
-                      flex: 1,
-                      child: GestureDetector(
-                        onTap: (){
-                          SpecificCalenderView(context); // 날짜 선택
-                        },
-                        child: TextIf(context, '희망 날짜', DataTimeEditingController, 15)
-                      ),
-                    ),
-
-                    Expanded(
-                      flex: 1,
-                      child: GestureDetector(
-                        onTap: (){
-                          test(context);
-                        },
-                        child: TextIf( context, '시작 시간 선택', InitTimeEditngController, 15)
-                      ),
-                    ),
-
-                    Expanded(
-                      flex: 1,
-                      child: GestureDetector(
-                        onTap: (){
-                          print(InitTimeEditngController.text);
-                          print(EndTimeEditingController.text);
-                        },
-                        child: TextIf( context, '종료 시간 선택', EndTimeEditingController, 15)
-                      ),
-                    ),
+                    SizedBox(height: 60,),
                   ],
                 ),
 
-                SizedBox(height: 60,),
                 Column(
                   children: [
                     Text('오시는 길',

@@ -93,6 +93,14 @@ flutter:
           weight: 400
         - asset: fonts/GmarketSansTTFBold.ttf
           weight: 700
+    - family: Pretendard
+      fonts:
+        - asset: fonts/Pretendard-Light.ttf
+          weight: 200
+        - asset: fonts/Pretendard-Medium.ttf
+          weight: 400
+        - asset: fonts/Pretendard-Bold.ttf
+          weight: 700
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf
