@@ -3,6 +3,7 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:seegong_flutter/etc/ReserveTextClass.dart';
 import 'package:seegong_flutter/etc/color.dart';
 import 'package:seegong_flutter/etc/shadow.dart';
 import 'package:seegong_flutter/screens/Appbar.dart';
@@ -149,7 +150,7 @@ class _SpecificScreenState extends State<SpecificScreen> {
                           flex: 100,
                           child: GestureDetector(
                             onTap: (){
-                              test(context);
+                              setUsageTime(context);
                             },
                             child: TextIf( context, '시작 시간 선택', InitTimeEditngController, 15)
                           ),
@@ -172,17 +173,11 @@ class _SpecificScreenState extends State<SpecificScreen> {
                   ],
                 ),
 
+                /* 오시는 길 부분 */
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('오시는 길',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w700,
-                      letterSpacing: -2,
-                      color: mainTextColor
-                    ),),
-                    SizedBox(height: 10,),
+                    HeadText(headText: '오시는 길'),
                     //구글 맵 들어갈 자리
                     Container(
                       width: MediaQuery.of(context).size.width,
@@ -195,151 +190,36 @@ class _SpecificScreenState extends State<SpecificScreen> {
                     ),
                     SizedBox(height: 40,),
 
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            HeadText(headText: '공간 소개'),
+                            DescriptLight(subject: '한줄 소개',description: '공간 소개'),
+                            DescriptLight(subject: '영업 시간',description: '0900 ~ 1600'),
+                            DescriptLight(subject: '휴무일', description: '주말 휴무'),
+                          ],
+                        ), SizedBox(height: 30,),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            HeadText(headText: '환불시 주의사항'),
+                            DescriptCaution(descrpitText: '3일전 환불 가능, 2일전 80%, 하루전 50%, 당일 환불 불가'),
+                          ],
+                        ),
+                        SizedBox(height: 30,),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            HeadText(headText: '환불시 주의사항'),
+                            DescriptCaution(descrpitText: '이용당일 이후 관련사항은 시설관리자에게 직접 문의 바랍니다. 또한 결제이후 취소시, 시설 관리자와 문의 이후 취소 가능합니다.'),
+                            SizedBox(height: 20,),
 
-                    Container(
-                      alignment: Alignment.topLeft,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                '공간 소개',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 18
-                                ),
-                              ),
-                              SizedBox(height: 10,),
-
-                              Row(
-                                children: [
-                                  Expanded(
-                                      flex: 2,
-                                      child: Text(
-                                        '한줄 소개',
-                                        style: TextStyle(
-                                          color: Color(0xff434849),
-                                        ),
-                                      )
-                                  ),
-                                  Expanded(
-                                      flex: 8,
-                                      child: Text(
-                                        '회의실 혹은 강의실로 사용 할 수 있습니다.',
-                                        style: TextStyle(
-                                            color: Color(0xff999999)
-                                        ),
-                                      ))
-                                ],
-                              ),
-                              SizedBox(height: 3,),
-
-                              Row(
-                                children: [
-                                  Expanded(
-                                      flex: 2,
-                                      child: Text(
-                                        '영업시간',
-                                        style: TextStyle(
-                                            color: Color(0xff434849)
-                                        ),
-                                      )
-                                  ),
-                                  Expanded(
-                                      flex: 8,
-                                      child: Text(
-                                        '09:00 ~ 19:00',
-                                        style: TextStyle(
-                                            color: Color(0xff999999)
-                                        ),
-                                      ))
-
-                                ],
-                              ),
-                              SizedBox(height: 3,),
-                              Row(
-                                children: [
-                                  Expanded(
-                                      flex: 2,
-                                      child: Text(
-                                        '휴무일',
-                                        style: TextStyle(
-                                            color: Color(0xff434849)
-                                        ),
-                                      )
-                                  ),
-                                  Expanded(
-                                      flex: 8,
-                                      child: Text(
-                                        '주말 휴무',
-                                        style: TextStyle(
-                                            color: Color(0xff999999)
-                                        ),
-                                      ))
-
-                                ],
-                              ),
-                            ],
-                          ), SizedBox(height: 30,),
-
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                '환불시 주의사항',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 18
-                                ),
-                              ),
-                              SizedBox(height: 10,),
-
-                              Row(
-                                children: [
-                                  Text(
-                                    '3일전 환불 가능, 2일전 80%, 하루전 50%, 당일 환불 불가',
-                                    style: TextStyle(
-                                        color: Color(0xff999999)
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ],
-                          ),SizedBox(height: 30,),
-
-
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                '예약시 주의사항',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 18
-                                ),
-                              ),
-                              SizedBox(height: 10,),
-
-                              Row(
-                                children: [
-                                  Flexible(
-                                    child: Text(
-                                      '이용당일 이후 관련사항은 시설관리자에게 직접 문의 바랍니다. 또한 결제이후 취소시, 시설 관리자와 문의 이후 취소 가능합니다.',
-                                      style: TextStyle(
-                                          color: Color(0xff999999)
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
-                              SizedBox(height: 20,),
-
-                            ],
-                          ),
-                        ],
-                      ),
+                          ],
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -347,68 +227,27 @@ class _SpecificScreenState extends State<SpecificScreen> {
             ),
           ),
 
-          Container(
-            padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
-            height: 45,
-            child: ElevatedButton(onPressed: (){
-              Navigator.pushNamed(context, ReservationScreen.routename);
-            },
-                child: Text('예약하기',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.white
-                ),),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xff033780)
-              )
+          /*예약하기 버튼*/
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+            child: GestureDetector(
+              child: ColorButton(buttonText: '예약하기'),
+              onTap: () {
+                if (DataTimeEditingController.text != '' &&
+                    InitTimeEditngController.text != '' &&
+                    EndTimeEditingController.text != '') {
+                  Navigator.pushNamed(context, ReservationScreen.routename,
+                      arguments: ToReservArgument(
+                          DataTimeEditingController,
+                          InitTimeEditngController,
+                          EndTimeEditingController,
+                          TotalRentTIme));
+                } else {
+                  print("뭔가 이상함");
+                }
+              },
             ),
           ),
-
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                GestureDetector(
-                  onTap: (){
-                    print(EndTimeEditingController);
-                    print(InitTimeEditngController);
-                    print(DataTimeEditingController);
-                  },
-                  child: Container(
-                    width: MediaQuery.of(context).size.width / 2.2,
-                    height: 50,
-                    color: Colors.black.withOpacity(0.3),
-                    alignment: Alignment.center,
-                    child: Text('전화'),
-                  ),
-                ),
-                SizedBox(width: 10,),
-                Container(
-                  width: MediaQuery.of(context).size.width / 2.2,
-                  height: 50,
-                  color: Colors.black.withOpacity(0.3),
-                  alignment: Alignment.center,
-                  child: GestureDetector(child: Text('예약 신청하기'),
-                  onTap: (){
-                    if(DataTimeEditingController.text != '' && InitTimeEditngController.text != '' && EndTimeEditingController.text != '') {
-                      Navigator.pushNamed(context, ReservationScreen.routename,
-                          arguments: ToReservArgument(
-                              DataTimeEditingController,
-                              InitTimeEditngController,
-                              EndTimeEditingController,
-                              TotalRentTIme
-                          ));}
-                    else {
-                      print("뭔가 이상함");
-                    }
-
-                    },
-                  ),
-                ),
-              ],
-            ),
-          )
 
 
 
@@ -416,7 +255,6 @@ class _SpecificScreenState extends State<SpecificScreen> {
       ),
     );
   }
-
 
   void SpecificCalenderView(BuildContext context) {
     showCupertinoDialog(
@@ -455,7 +293,6 @@ class _SpecificScreenState extends State<SpecificScreen> {
                     showActionButtons: true,
                     onSubmit: (args) => {
                       setState(() {
-                        //tempPickedDate = args as DateTime?;
                         DataTimeEditingController.text = args.toString();
                         convertDateTimeDisplay(
                             DataTimeEditingController.text);
@@ -469,7 +306,7 @@ class _SpecificScreenState extends State<SpecificScreen> {
   }
 
 
-  void test(BuildContext context) {
+  void setUsageTime(BuildContext context) {
     showCupertinoDialog(
         context: context, builder: (context){
       return Material(
@@ -510,9 +347,6 @@ class _SpecificScreenState extends State<SpecificScreen> {
 
                           onRangeCompleted: (range) => setState(() {
                             SetconvertTimeDisplay(range!);
-                            print(range.start.hour);
-                            print(range);
-                            print(range.end.hour);
                           } ),
 
                         ),

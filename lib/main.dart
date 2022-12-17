@@ -18,7 +18,7 @@ void main() async{
 
   return runApp(MyApp());
 }
-final GlobalKey<ScaffoldState> _key = GlobalKey();
+final GlobalKey<ScaffoldState> key = GlobalKey();
 
 
 class MyApp extends StatelessWidget {
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       title: 'Seegong',
       theme: ThemeData(
         fontFamily: 'Pretendard',
-        primaryColor: Colors.white,
+        primaryColor: Color(0xffffffff),
       ),
       initialRoute: '/',
       routes: {
