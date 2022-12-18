@@ -1,6 +1,10 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
 import 'package:seegong_flutter/kakao_auth_module.dart';
+import 'package:seegong_flutter/model/controller.dart';
+import 'package:seegong_flutter/model/currentUser.dart';
 import 'package:seegong_flutter/screens/Reservation.dart';
 import 'package:seegong_flutter/screens/ReservationResult.dart';
 import 'package:seegong_flutter/screens/SpaceListScreen.dart';
@@ -10,10 +14,12 @@ import 'package:flutter/services.dart';
 
 class LoginScreen extends StatelessWidget {
   final kakaoAuth = KakaoAuthModule(KakaoLogin());
-
   LoginScreen({super.key});
   @override
   Widget build(BuildContext context) {
+
+    final currentUserController = Get.put(UserController());
+
     return Scaffold(
       body: Center(
         child: SingleChildScrollView(
@@ -36,9 +42,14 @@ class LoginScreen extends StatelessWidget {
                     Container(
                       padding: EdgeInsets.only(top: 250),
                       child:
-                      const Text(
-                        "로그인하여 시작하세요",
-                        style: TextStyle(color: Colors.grey, fontSize: 18),
+                      GestureDetector(
+                        onTap: () async{
+                          print(kakaoAuth.isLogined);
+                        },
+                        child: const Text(
+                          "로그인하여 시작하세요",
+                          style: TextStyle(color: Colors.grey, fontSize: 18),
+                        ),
                       ),
                       // TODO Add Google login button
                       // TODO Follow Google's design guide
@@ -53,7 +64,32 @@ class LoginScreen extends StatelessWidget {
                       onPressed: () async {
                         await kakaoAuth.login();
                         //setState(() {});
-                        if(kakaoAuth.isLogined){
+                        if(kakaoAuth.isLogined) {
+                          User user = await UserApi.instance.me();
+                          var ref = FirebaseDatabase.instance.ref('userToken');
+                          ref.update(
+                              {
+                                "${user.id}" : {
+                                  'email' : "${user.kakaoAccount?.email.toString()}",
+                                  "UserProfile": "${user.kakaoAccount?.profile?.profileImageUrl.toString()}",
+                                  "UserName": "${user.kakaoAccount?.profile?.nickname.toString()}",
+                                  "gender": "${user.kakaoAccount?.gender.toString()}",
+                                  "UserageRange": "${user.kakaoAccount?.ageRange.toString()}",
+                                  "birthday": "${user.kakaoAccount?.birthday.toString()}"
+                                }
+                              }
+                          );
+                          // var value = await ref.orderByValue().equalTo('path').get();
+                          // print('값이 있음?');
+                          // print(value.value);
+                          currentUserController.updateUser(
+                              userToken: '${user.id}',
+                              email: '${user.kakaoAccount?.email}',
+                              userName: '${user.kakaoAccount?.profile?.nickname}',
+                              userPforile: '${user.kakaoAccount?.profile?.profileImageUrl}',
+                              gender: '${user.kakaoAccount?.gender}',
+                              userageRange: '${user.kakaoAccount?.ageRange}',
+                              birthday: '${user.kakaoAccount?.birthday}');
                           Navigator.pushNamed(context, SpaceSelect.routename);
                         }
                       },
@@ -66,28 +102,6 @@ class LoginScreen extends StatelessWidget {
                       },
                       child: const Text('Logout'),
                     ),*/
-
-                    ElevatedButton(onPressed: () async{
-                      DatabaseReference ref = FirebaseDatabase.instance.ref("SpaceSelect/SpaceName");
-                      await ref.set({
-                        "0" : {
-                          "name" : "강의실"
-                        },
-                        "1" : {
-                          "name" : "잔디구장"
-                        },
-                        "2" : {
-                          "name" : "연습실 학원"
-                        },
-                        "3" : {
-                          "name" : "풋살장"
-                        },
-                        "4" : {
-                          "name" : "모임터 카페"
-                        }
-                      });
-                      Navigator.pushNamed(context, SpaceSelect.routename);
-                    }, child: Text('세팅')),
                   ],
                 )
               ],

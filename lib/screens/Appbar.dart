@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 AppBar Appbarseegong = AppBar(
   backgroundColor: Colors.grey,
   toolbarHeight: 80,
+
   title: Image.asset("assets/images/glob_top_img_none.png",
       fit: BoxFit.contain,
       height: 50),

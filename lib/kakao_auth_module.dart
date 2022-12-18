@@ -21,7 +21,6 @@ class KakaoAuthModule {
     user = null;
   }
 
-  /// 디버그용
   Future printInfo() async {
     /*
     try {

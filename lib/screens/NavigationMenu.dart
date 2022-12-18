@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart'; // 나중에 삭제
 import 'package:seegong_flutter/kakao_auth_module.dart';
+import 'package:seegong_flutter/model/controller.dart';
 import 'package:seegong_flutter/screens/LoginScreen.dart';
 import 'package:seegong_flutter/screens/ReservationList.dart';
 
 /// 네비게이션 메뉴 표시 전용 위젯
+///
 class NavigationMenu extends StatelessWidget {
   const NavigationMenu({
     Key? key,
@@ -15,6 +17,8 @@ class NavigationMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final currentUserController = Get.put(UserController());
+
     return Drawer(
       child: SingleChildScrollView(
         child: Column(
@@ -23,10 +27,10 @@ class NavigationMenu extends StatelessWidget {
             /// 상단부 계정 헤더
             UserAccountsDrawerHeader(
               currentAccountPicture: CircleAvatar(
-                backgroundImage: AssetImage('images/imgs/wws.jpeg'),
+                backgroundImage: NetworkImage('${currentUserController.user.value.userProfile}'),
               ),
-              accountEmail: Text('test@gmail.com'),
-              accountName: Text('testName'),
+              accountEmail: Text('${currentUserController.user.value.email}'),
+              accountName: Text('${currentUserController.user.value.userName}'),
               onDetailsPressed: () {
                 print('press details');
                 Navigator.pop(context);
