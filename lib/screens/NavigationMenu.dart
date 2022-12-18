@@ -7,76 +7,97 @@ class NavigationMenu extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
+  static const customDivider = const Padding(
+    padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
+    child: const Divider(height: 1, color: const Color.fromRGBO(142, 142, 142, 1), thickness: 0.5),
+  );
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            /// 상단부 계정 헤더
-            UserAccountsDrawerHeader(
-              currentAccountPicture: CircleAvatar(
-                backgroundImage: AssetImage('images/imgs/wws.jpeg'),
-              ),
-              accountEmail: Text('test@gmail.com'),
-              accountName: Text('testName'),
-              onDetailsPressed: () {
-                print('press details');
-                Navigator.pop(context);
-              },
-              decoration: BoxDecoration(
-                  color: Colors.blue[300],
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(40),
-                    bottomRight: Radius.circular(40),
-                  )),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          /// 상단부 계정 헤더
+          UserAccountsDrawerHeader(
+            currentAccountPicture: CircleAvatar(
+              backgroundImage: AssetImage('images/imgs/wws.jpeg'),
+              radius: 24,
             ),
-            /// 본문 아이콘 나열
-            ListTile(
-              leading: Icon(Icons.notifications),
-              title: Text('공지사항'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-
+            accountName: Text('testName', style: TextStyle(fontSize: 17, color: Colors.white),),
+            accountEmail: Text('test@gmail.com', style: TextStyle(fontSize: 14, color: Color.fromRGBO(255, 255, 255, 0.4)),),
+            onDetailsPressed: () {
+              print('press details');
+            },
+            decoration: BoxDecoration(
+              color: Color.fromRGBO(3, 55, 128, 1),
             ),
-            ListTile(
-              leading: Icon(Icons.help),
-              title: Text('도움말'),
-              onTap: () {
-                Navigator.pop(context);
-              },
+          ),
+          Expanded(
+            /// 공지사항 등 본문
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                /// 본문 아이콘 나열
+                Column(
+                  children: [
+                    ListTile(
+                      // leading: Icon(Icons.notifications),
+                      title: Text('공지사항', style: TextStyle(fontSize: 14, color: Color.fromRGBO(51, 51, 51, 1), fontWeight: FontWeight.bold),),
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                    customDivider,
+                    ListTile(
+                      // leading: Icon(Icons.help),
+                      title: Text('도움말', style: TextStyle(fontSize: 14, color: Color.fromRGBO(51 , 51, 51, 1), fontWeight: FontWeight.bold),),
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                    customDivider,
+                    ListTile(
+                      // leading: Icon(Icons.list),
+                      title: Text("예약내역", style: TextStyle(fontSize: 14, color: Color.fromRGBO(51, 51, 51, 1), fontWeight: FontWeight.bold),),
+                      onTap: (){
+                        Navigator.pushNamed(context, ReservationList.routename);
+                      },
+                    ),
+                    customDivider,
+                    ListTile(
+                      // leading: Icon(Icons.call),
+                      title: Text("문의하기", style: TextStyle(fontSize: 14, color: Color.fromRGBO(51, 51, 51, 1), fontWeight: FontWeight.bold),),
+                      onTap: (){
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ],
+                ),
+                /// 로그인 버튼 시작
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(16.0, 0, 16.0, 128.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      TextButton(
+                        onPressed: (){
+                          // todo: 로그아웃 기능 추가
+                          Navigator.pop(context);
+                        },
+                        child: Text("로그아웃", style: TextStyle(decoration: TextDecoration.underline)),
+                        style: ButtonStyle(
+                          foregroundColor: MaterialStateProperty.all(Color.fromRGBO(153, 153, 153, 1)),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
-            ListTile(
-              leading: Icon(Icons.list),
-              title: Text("예약내역"),
-              onTap: (){
-                Navigator.pushNamed(context, ReservationList.routename);
-                //Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.call),
-              title: Text("문의하기"),
-              onTap: (){
-                Navigator.pop(context);
-              },
-            ),
-            /// 로그인 버튼 시작
-            Divider(height: 32, color: Colors.transparent, thickness: 32),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(16.0, 0, 16.0, 0),
-              child: ElevatedButton(
-                onPressed: (){
-                  Navigator.pop(context);
-                },
-                child: Text("로그아웃"),
-                style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.blue)),
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

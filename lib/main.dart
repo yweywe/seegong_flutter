@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/':(context) => SpecificScreen(),
+        '/':(context) => SpaceListScreen(),
         SpaceSelect.routename: (context) => SpaceSelect(),
         SpaceListScreen.routename: (context) => SpaceListScreen(),
         SpecificScreen.routename : (context) => SpecificScreen(),
