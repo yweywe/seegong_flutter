@@ -24,7 +24,7 @@ void main() async{
 
   return runApp(MyApp());
 }
-final GlobalKey<ScaffoldState> _key = GlobalKey();
+final GlobalKey<ScaffoldState> key = GlobalKey();
 
 
 class MyApp extends StatelessWidget {
@@ -34,12 +34,12 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp( //get
       title: 'Seegong',
       theme: ThemeData(
-        fontFamily: 'gsans',
-        primaryColor: Colors.white,
+        fontFamily: 'Pretendard',
+        primaryColor: Color(0xffffffff),
       ),
       initialRoute: '/',
       routes: {
-        '/':(context) => LoginScreen(),
+        '/':(context) => SpecificScreen(),
         SpaceSelect.routename: (context) => SpaceSelect(),
         SpaceListScreen.routename: (context) => SpaceListScreen(),
         SpecificScreen.routename : (context) => SpecificScreen(),

@@ -3,6 +3,8 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:seegong_flutter/etc/ReserveTextClass.dart';
+import 'package:seegong_flutter/etc/color.dart';
 import 'package:seegong_flutter/etc/shadow.dart';
 import 'package:seegong_flutter/screens/Appbar.dart';
 import 'package:seegong_flutter/screens/Reservation.dart';
@@ -45,308 +47,207 @@ class _SpecificScreenState extends State<SpecificScreen> {
       body: ListView(
         children: [
           Container(
-            padding: EdgeInsets.all(20),
+            width: double.infinity,
+            height: 240,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    fit: BoxFit.fill,
+                    image: AssetImage('${t1.imgurl}')
+                )
+            ),
+          ),
+          SizedBox(height: 15,),
+          Padding(
+            padding: const EdgeInsets.all(20.0),
             child: Column(
               children: [
-                SizedBox(
-                  height: 30,
-                ),
-                //장소 사진에 대해서...
-                Container(
-                  width: double.infinity,
-                  height: 300,
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadowVar
-                    ],
-                    borderRadius: BorderRadius.circular(10),
-                    image: DecorationImage(
-                      fit: BoxFit.fill,
-                      image: AssetImage('${t1.imgurl}')
-                    )
-                  ),
-                ),
-                SizedBox(height: 10,),
 
                 //장소 명, 장소 소개
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                Column(
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text(
-                          '${t1.SpaceName}',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w400,
-                            letterSpacing: -1.5
-                          ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              '${t1.SpaceName}', // 작은 천사들 교육장 / 장소 명
+                              style: TextStyle(
+                                color: Color(0xff333333),
+                                fontSize: 20,
+                                fontWeight: FontWeight.w700,
+                                letterSpacing: -1.5
+                              ),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            //위
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: [
+                                    Icon(
+                                      Icons.location_on,
+                                      color: Color(0xff033780),
+                                    ),
+                                    SizedBox(width: 3,),
+                                    Text(
+                                      '경기 고양시 일산동구 위시티4로 45 3층',
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        color: Color(0xff666666)
+                                      ),
+                                    )
+                                  ],
+                                ),
+
+                                Row(
+                                  children: [
+                                    Icon(
+                                      Icons.call,
+                                      color: Color(0xff033780),
+                                    ),
+                                    SizedBox(width: 3,),
+
+                                    Text(
+                                      '010-0000-0000',
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          color: Color(0xff666666)
+                                      ),
+                                    )
+                                  ],
+                                )
+
+                              ],
+                            ),
+                          ],
                         ),
 
-                        Text(
-                          '${t1.Spaceintroduction}',
-                          style: TextStyle(
-                            color: Colors.black.withOpacity(0.3),
-                            fontSize: 12,
+                      ],
+                    ),
+                    SizedBox(height: 15,),
+
+
+                    SizedBox(height: 5,),
+
+                    Row(
+                      children: [
+                        Expanded(
+                          flex: 100,
+                          child: GestureDetector(
+                            onTap: (){
+                              SpecificCalenderView(context); // 날짜 선택
+                            },
+                            child: TextIf(context, '희망 날짜', DataTimeEditingController, 15)
                           ),
-                        )
+                        ),
+                        Expanded(flex: 5, child: SizedBox()),
+                        Expanded(
+                          flex: 100,
+                          child: GestureDetector(
+                            onTap: (){
+                              setUsageTime(context);
+                            },
+                            child: TextIf( context, '시작 시간 선택', InitTimeEditngController, 15)
+                          ),
+                        ),
+                        Expanded(flex: 5, child: SizedBox()),
+                        Expanded(
+                          flex: 100,
+                          child: GestureDetector(
+                            onTap: (){
+                              print(InitTimeEditngController.text);
+                              print(EndTimeEditingController.text);
+                            },
+                            child: TextIf( context, '종료 시간 선택', EndTimeEditingController, 15)
+                          ),
+                        ),
                       ],
                     ),
 
-                  ],
-                ),
-                SizedBox(height: 15,),
-
-
-
-                Container(
-                  width: double.infinity,
-                  height: 3,
-                  color: Colors.black.withOpacity(0.3),
-                ),
-                SizedBox(height: 5,),
-                Row(
-                  children: [
-                    Expanded(
-                      flex: 1,
-                      child: GestureDetector(
-                        onTap: (){
-                          SpecificCalenderView(context); // 날짜 선택
-                        },
-                        child: TextIf(context, '희망 날짜', DataTimeEditingController, 15)
-                      ),
-                    ),
-
-                    Expanded(
-                      flex: 1,
-                      child: GestureDetector(
-                        onTap: (){
-                          test(context);
-                        },
-                        child: TextIf( context, '시작 시간 선택', InitTimeEditngController, 15)
-                      ),
-                    ),
-
-                    Expanded(
-                      flex: 1,
-                      child: GestureDetector(
-                        onTap: (){
-                          print(InitTimeEditngController.text);
-                          print(EndTimeEditingController.text);
-                        },
-                        child: TextIf( context, '종료 시간 선택', EndTimeEditingController, 15)
-                      ),
-                    ),
+                    SizedBox(height: 60,),
                   ],
                 ),
 
-                SizedBox(height: 60,),
+                /* 오시는 길 부분 */
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('오시는 길',
-                    style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.w700,
-                      letterSpacing: -1.4
-                    ),),
-                    SizedBox(height: 10,),
-
+                    HeadText(headText: '오시는 길'),
                     //구글 맵 들어갈 자리
                     Container(
                       width: MediaQuery.of(context).size.width,
-                      height: 350,
+                      height: 200,
                       child: GMap(),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                       //color: Colors.black,
                     ),
                     SizedBox(height: 40,),
 
-                    Container(
-                      padding: EdgeInsets.all(3),
-                      alignment: Alignment.topLeft,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('공간 소개'),
-                          SizedBox(height: 3,),
-                          Container(width: MediaQuery.of(context).size.width, height: 3, color: Colors.black.withOpacity(0.4),),
-                          SizedBox(height: 3,),
-                          Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(6.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            HeadText(headText: '공간 소개'),
+                            DescriptLight(subject: '한줄 소개',description: '공간 소개'),
+                            DescriptLight(subject: '영업 시간',description: '0900 ~ 1600'),
+                            DescriptLight(subject: '휴무일', description: '주말 휴무'),
+                          ],
+                        ), SizedBox(height: 30,),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            HeadText(headText: '환불시 주의사항'),
+                            DescriptCaution(descrpitText: '3일전 환불 가능, 2일전 80%, 하루전 50%, 당일 환불 불가'),
+                          ],
+                        ),
+                        SizedBox(height: 30,),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            HeadText(headText: '환불시 주의사항'),
+                            DescriptCaution(descrpitText: '이용당일 이후 관련사항은 시설관리자에게 직접 문의 바랍니다. 또한 결제이후 취소시, 시설 관리자와 문의 이후 취소 가능합니다.'),
+                            SizedBox(height: 20,),
 
-                                  children: [
-                                    Text('${t1.Spaceintroduction}'),
-                                    SizedBox(height: 3,),
-                                    Row(
-                                      children: [
-                                        Text('영업시간 '),
-                                        Text('${t1.OpeningsHours}'),
-                                      ],
-                                    ),
-                                    SizedBox(height: 3,),
-
-                                    Row(
-                                      children: [
-                                        Text('휴무일 '),
-                                        Text('${t1.Holiday}'),
-                                      ],
-                                    ),
-
-
-                                  ],
-                                ),
-                              )
-
-
-                            ],
-                          ), SizedBox(height: 20,),
-                          Text('시설 안내'),
-                          SizedBox(height: 3,),
-                          Container(width: MediaQuery.of(context).size.width, height: 3, color: Colors.black.withOpacity(0.4),),
-                          SizedBox(height: 3,),
-                          Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(6.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-
-                                  children: [
-                                    Text('${t1.RoomItem}'),
-                                    SizedBox(height: 3,),
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),SizedBox(height: 30,),
-
-
-                        ],
-                      ),
+                          ],
+                        ),
+                      ],
                     ),
-
-
-
                   ],
                 ),
-
-
-
-
-
               ],
             ),
           ),
 
-
-
-          Column(
-            children: [
-              Container(
-                alignment: Alignment.centerLeft,
-                width: MediaQuery.of(context).size.width,
-                height: 40,
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
-                  child: Text('예약시 주의사항'),
-                ),
-                decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.5)
-                ),
-              ),
-
-              Container(
-                alignment: Alignment.centerLeft,
-                width: MediaQuery.of(context).size.width,
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(25, 30, 25, 30),
-                  child: Text('$AlertMessageFromSeegong'),
-                ),
-                decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.1)
-                ),
-              ),
-            ],
-          ),
-
-          Column(
-            children: [
-              Container(
-                alignment: Alignment.centerLeft,
-                width: MediaQuery.of(context).size.width,
-                height: 40,
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(25, 10, 0, 10),
-                  child: Text('예약시 주의사항'),
-                ),
-                decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.5)
-                ),
-              ),
-
-              Container(
-                alignment: Alignment.centerLeft,
-                width: MediaQuery.of(context).size.width,
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(25, 30, 25, 30),
-                  child: Text('$RefundPolicyInformation'),
-                ),
-                decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.1)
-                ),
-              ),
-            ],
-          ),
-
+          /*예약하기 버튼*/
           Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                GestureDetector(
-                  onTap: (){
-                    print(EndTimeEditingController);
-                    print(InitTimeEditngController);
-                    print(DataTimeEditingController);
-                  },
-                  child: Container(
-                    width: MediaQuery.of(context).size.width / 2.2,
-                    height: 50,
-                    color: Colors.black.withOpacity(0.3),
-                    alignment: Alignment.center,
-                    child: Text('전화'),
-                  ),
-                ),
-                SizedBox(width: 10,),
-                Container(
-                  width: MediaQuery.of(context).size.width / 2.2,
-                  height: 50,
-                  color: Colors.black.withOpacity(0.3),
-                  alignment: Alignment.center,
-                  child: GestureDetector(child: Text('예약 신청하기'),
-                  onTap: (){
-                    if(DataTimeEditingController.text != '' && InitTimeEditngController.text != '' && EndTimeEditingController.text != '') {
-                      Navigator.pushNamed(context, ReservationScreen.routename,
-                          arguments: ToReservArgument(
-                              DataTimeEditingController,
-                              InitTimeEditngController,
-                              EndTimeEditingController,
-                              TotalRentTIme
-                          ));}
-                    else {
-                      print("뭔가 이상함");
-                    }
-
-                    },
-                  ),
-                ),
-              ],
+            padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+            child: GestureDetector(
+              child: ColorButton(buttonText: '예약하기'),
+              onTap: () {
+                if (DataTimeEditingController.text != '' &&
+                    InitTimeEditngController.text != '' &&
+                    EndTimeEditingController.text != '') {
+                  Navigator.pushNamed(context, ReservationScreen.routename,
+                      arguments: ToReservArgument(
+                          DataTimeEditingController,
+                          InitTimeEditngController,
+                          EndTimeEditingController,
+                          TotalRentTIme));
+                } else {
+                  print("뭔가 이상함");
+                }
+              },
             ),
-          )
+          ),
 
 
 
@@ -354,7 +255,6 @@ class _SpecificScreenState extends State<SpecificScreen> {
       ),
     );
   }
-
 
   void SpecificCalenderView(BuildContext context) {
     showCupertinoDialog(
@@ -393,7 +293,6 @@ class _SpecificScreenState extends State<SpecificScreen> {
                     showActionButtons: true,
                     onSubmit: (args) => {
                       setState(() {
-                        //tempPickedDate = args as DateTime?;
                         DataTimeEditingController.text = args.toString();
                         convertDateTimeDisplay(
                             DataTimeEditingController.text);
@@ -407,7 +306,7 @@ class _SpecificScreenState extends State<SpecificScreen> {
   }
 
 
-  void test(BuildContext context) {
+  void setUsageTime(BuildContext context) {
     showCupertinoDialog(
         context: context, builder: (context){
       return Material(
@@ -449,9 +348,6 @@ class _SpecificScreenState extends State<SpecificScreen> {
                           onRangeCompleted: (range) => setState(() {
                             DateTime.now();
                             SetconvertTimeDisplay(range!);
-                            print(range.start.hour);
-                            print(range);
-                            print(range.end.hour);
                           } ),
 
                         ),
@@ -555,12 +451,20 @@ class SpecificParameter {
 TextIf(BuildContext context, String str, TextEditingController dtfm, double size) {
   if (dtfm.text == "") {
     return Container(
+      height: 45,
       alignment: Alignment.center,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(5),
+        border: Border.all(
+          width: 1,
+          color: Color(0xff999999),
+        )
+      ),
       child: Text(
           '$str',
           style: TextStyle(
               fontSize: 16,
-              color: Colors.black.withOpacity(0.4)
+              color: Color(0xff999999),
 
           )
       ),
@@ -568,13 +472,24 @@ TextIf(BuildContext context, String str, TextEditingController dtfm, double size
   }
   else {
     return Container(
+      height: 45,
+
       alignment: Alignment.center,
       child: Text(
         '${dtfm.text}',
         style: TextStyle(
           fontSize: size,
-          color: Colors.black.withOpacity(0.8),
+          color: Color(0xff428AF0),
         ),
+      ),
+
+      decoration: BoxDecoration(
+        color: Color(0xff0057D0).withOpacity(0.1),
+          borderRadius: BorderRadius.circular(5),
+          border: Border.all(
+            width: 1,
+            color: Color(0xff428AF0),
+          )
       ),
     );
   }
