@@ -97,10 +97,10 @@ class LoginScreen extends StatelessWidget {
                     ),/*
                     ElevatedButton(
                       onPressed: () async {
-                        await viewModel.logout();
+                        Navigator.pushNamed(context, SpaceSelect.routename);
                         //setState(() {});
                       },
-                      child: const Text('Logout'),
+                      child: const Text('Login생략'),
                     ),*/
                   ],
                 )

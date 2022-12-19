@@ -5,6 +5,7 @@ import 'package:seegong_flutter/kakao_auth_module.dart';
 import 'package:seegong_flutter/model/controller.dart';
 import 'package:seegong_flutter/screens/LoginScreen.dart';
 import 'package:seegong_flutter/screens/ReservationList.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 /// 네비게이션 메뉴 표시 전용 위젯
 ///
@@ -27,7 +28,8 @@ class NavigationMenu extends StatelessWidget {
             /// 상단부 계정 헤더
             UserAccountsDrawerHeader(
               currentAccountPicture: CircleAvatar(
-                backgroundImage: NetworkImage('${currentUserController.user.value.userProfile}'),
+                backgroundImage: NetworkImage(
+                    '${currentUserController.user.value.userProfile}'),
               ),
               accountEmail: Text('${currentUserController.user.value.email}'),
               accountName: Text('${currentUserController.user.value.userName}'),
@@ -48,14 +50,20 @@ class NavigationMenu extends StatelessWidget {
               leading: Icon(Icons.notifications),
               title: Text('공지사항'),
               onTap: () {
-                Navigator.pop(context);
+                launchUrl(
+                  Uri.parse(
+                      "https://share.siheung.go.kr/board/board_list.do?gidx=0001&pageIndex=1&key=105000"),
+                );
               },
             ),
             ListTile(
-              leading: Icon(Icons.help),
+              leading: Icon(Icons.notifications),
               title: Text('도움말'),
               onTap: () {
-                Navigator.pop(context);
+                launchUrl(
+                  Uri.parse(
+                      "https://share.siheung.go.kr/contents/contents.do?gidx=130102&key=102000"),
+                );
               },
             ),
             ListTile(
@@ -69,9 +77,7 @@ class NavigationMenu extends StatelessWidget {
             ListTile(
               leading: Icon(Icons.call),
               title: Text("문의하기"),
-              onTap: () {
-                Navigator.pop(context);
-              },
+              onTap: () => launch("tel:0313106043"),
             ),
 
             /// 로그아웃 버튼 시작
@@ -91,7 +97,7 @@ class NavigationMenu extends StatelessWidget {
                     backgroundColor: MaterialStateProperty.all(Colors.blue)),
               ),
             ),
-
+            /*
             /// 디버그
             Padding(
               padding: const EdgeInsets.fromLTRB(16.0, 0, 16.0, 0),
@@ -104,7 +110,7 @@ class NavigationMenu extends StatelessWidget {
                 style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.blue)),
               ),
-            ),
+            ),*/
           ],
         ),
       ),
