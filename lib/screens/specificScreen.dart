@@ -428,10 +428,10 @@ class _SpecificScreenState extends State<SpecificScreen> {
                       Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: TimeRange(
-                          firstTime: TimeOfDay(hour: 9, minute: 0),
-                          lastTime: TimeOfDay(hour: 24, minute: 0),
+                          firstTime: TimeOfDay(hour: 9, minute: 0), //시작을 언제하는지?
+                          lastTime: TimeOfDay(hour: 24, minute: 0), //종료가 언제인지?
                           fromTitle: Text(
-                            '시작시간을 선택하세요',
+                            '123',
                             style: TextStyle(
                               fontSize: 20,
                               color: Colors.black.withOpacity(0.8),
@@ -439,7 +439,7 @@ class _SpecificScreenState extends State<SpecificScreen> {
                           ),
                           textStyle: TextStyle(fontWeight: FontWeight.normal, color: Colors.black87, letterSpacing: -1.5),
                           activeTextStyle: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, letterSpacing: -1.5),
-                          timeStep: 30,
+                          timeStep: 30, //30분 간격으로 설정
                           timeBlock: 30,
                           backgroundColor: Colors.white10,
                           activeBackgroundColor: Colors.orange,
@@ -447,6 +447,7 @@ class _SpecificScreenState extends State<SpecificScreen> {
                           activeBorderColor: Colors.black.withOpacity(0.5),
 
                           onRangeCompleted: (range) => setState(() {
+                            DateTime.now();
                             SetconvertTimeDisplay(range!);
                             print(range.start.hour);
                             print(range);
@@ -616,7 +617,6 @@ class GMapState extends State<GMap> {
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
         },
-        myLocationButtonEnabled: false,
       ),
     );
   }

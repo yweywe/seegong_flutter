@@ -86,6 +86,7 @@ lib/generated_plugin_registrant.dart
 **/ios/ServiceDefinitions.json
 **/ios/Runner/GeneratedPluginRegistrant.*
 **/ios/Runner/Storage.swift
+/lib/auth/keys.dart
 
 # Exceptions to above rules.
 !**/ios/**/default.mode1v3

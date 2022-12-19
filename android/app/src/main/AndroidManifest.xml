@@ -25,6 +25,19 @@
 
        <meta-data android:name="com.google.android.geo.API_KEY"
            android:value="AIzaSyBoxIp0jd12bpdWGbTUJuI9oI84SwyBMxw"/>
+       <activity
+           android:name="com.kakao.sdk.flutter.AuthCodeCustomTabsActivity"
+           android:exported="true">
+           <intent-filter android:label="flutter_web_auth">
+               <action android:name="android.intent.action.VIEW" />
+               <category android:name="android.intent.category.DEFAULT" />
+               <category android:name="android.intent.category.BROWSABLE" />
+
+               <!-- Redirect URI, "kakao${YOUR_NATIVE_APP_KEY}://oauth" 형식 -->
+               <data android:scheme="kakao6488223bf1a9a5cc54920080dc26bdcd" android:host="oauth"/>
+           </intent-filter>
+       </activity>
+
         <activity
 
             android:name=".MainActivity"
