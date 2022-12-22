@@ -24,7 +24,7 @@ class LoginScreen extends StatelessWidget {
                 Divider(height: 64, color: Colors.transparent),
                 Container(
                   width: 295,
-                  height: 55,
+                  height: 45,
                   child: OutlinedButton(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -37,12 +37,36 @@ class LoginScreen extends StatelessWidget {
                         Image.asset('images/icons/angle-right.png'),
                       ],
                     ),
-                    onPressed: null,
                     style: OutlinedButton.styleFrom(
                       backgroundColor: Color.fromRGBO(255, 230, 23, 1),
                     ),
+                    onPressed: null,
                   ),
                 ),
+                Container(
+                  margin: EdgeInsets.only(top:15),
+                  width: 295,
+                  height: 45,
+                  child: OutlinedButton(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Image.asset('images/icons/google_small.png'),
+                        Text(
+                          "구글 로그인",
+                          style: TextStyle(color: Colors.black),
+                        ),
+                        Image.asset('images/icons/angle-right.png'),
+                      ],
+                    ),
+                    style: OutlinedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                    ),
+                    onPressed: null,
+                  ),
+                ),
+                /// 기존 코드
+                /*
                 SizedBox(
                   width: 295,
                   height: 55,
@@ -69,6 +93,7 @@ class LoginScreen extends StatelessWidget {
                     // iconSize: 295,
                   ),
                 ),
+                */
                 Divider(height: 48, color: Colors.transparent),
                 Column(
                   children: [
