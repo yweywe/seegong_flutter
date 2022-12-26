@@ -10,20 +10,32 @@ class SpaceListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Map<dynamic, dynamic>> testList = [
       {
-        "title": "장소명",
-        "dong": "정왕본동",
+        "title": "공본 스터디카페",
+        "dong": "경기 고양시 일산동구 위시티4로 45 3층",
         "cost_hr": "30000",
         "max_people": 30,
         "img_url": "images/imgs/wws.jpeg"
       },
       {
-        "title": "장소명",
-        "dong": "정왕본동",
+        "title": "이든샘 스터디카페",
+        "dong": "경기 고양시 일산동구 위시티4로 45 3층",
         "cost_hr": "30000",
         "max_people": 30,
         "img_url": "images/imgs/wws.jpeg"
       },
     ];
+
+    var TopButtonStyle = ButtonStyle(
+                  foregroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(153, 153, 153, 1)),
+                  backgroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(255, 255, 255, 1)),
+                  shadowColor: MaterialStateProperty.all<Color>(Colors.transparent),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(4),
+                          side: BorderSide(color: Color.fromRGBO(0, 0, 0, 0.1), width: 1),
+                      )
+                  )
+    );
 
     return Scaffold(
       drawerEnableOpenDragGesture: false,
@@ -38,20 +50,24 @@ class SpaceListScreen extends StatelessWidget {
                 Flexible(
                   fit: FlexFit.tight,
                   child: Padding(
-                    padding : const EdgeInsets.all(8.0),
+                    padding : const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 0),
                     child:  TextField(
+
                       keyboardType: TextInputType.text,
                       cursorColor: Colors.black,
 
                       decoration: InputDecoration(
+                        hintText: "검색어를 입력해주세요.",
                         enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            borderRadius: BorderRadius.all(Radius.circular(5)),
                             borderSide: BorderSide(
-                            color: Colors.black
+                              // width: 0,
+                              color: Color.fromRGBO(244, 245, 247, 100)
                           )
                         ),
-                          fillColor: Colors.black,
-                          prefixIcon:Icon(Icons.search),
+                        filled: true,
+                        fillColor: Color.fromRGBO(244, 245, 247, 100),
+                        prefixIcon:Icon(Icons.search),
                     ),
                     // child: TextField(
                     //   minLines: 1,
@@ -67,41 +83,104 @@ class SpaceListScreen extends StatelessWidget {
               ],
             ),
           ),
-          Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              ElevatedButton(onPressed: (){}, child: Text("날짜")),
-              ElevatedButton(onPressed: (){}, child: Text("시작시간")),
-              ElevatedButton(onPressed: (){}, child: Text("인원")),
-            ],
+          Padding(
+            padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 8.0),
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                // Expanded(flex: 5, child: SizedBox()),
+                Expanded(
+                  flex: 100,
+                  child: ElevatedButton(
+                    style: TopButtonStyle,
+                    onPressed: (){},
+                    child: Text("날짜")
+                  ),
+                ),
+                Expanded(flex: 10, child: SizedBox()),
+                Expanded(
+                  flex: 100,
+                  child: ElevatedButton(
+                    style: TopButtonStyle,
+                    onPressed: (){},
+                    child: Text("시작시간")
+                  ),
+                ),
+                Expanded(flex: 10, child: SizedBox()),
+                Expanded(
+                  flex: 100,
+                  child: ElevatedButton(
+                    style: TopButtonStyle,
+                    onPressed: (){},
+                    child: Text("인원")
+                  ),
+                ),
+                // Expanded(flex: 5, child: SizedBox()),
+              ],
+            ),
           ),
           Expanded(
             child: ListView.builder(
               scrollDirection: Axis.vertical,
                 itemCount: testList.length,
                 itemBuilder: (context, idx){
+                  var lastTextStyle = TextStyle(color: Color.fromRGBO(153, 153, 153, 1), fontSize: 12);
                   return GestureDetector(
-                    onTap: ()
-                    {
+                    onTap: () {
                       Navigator.pushNamed(context, SpecificScreen.routename);
                     },
-                    child: Column(
-                      children: [
-                        Image.asset(testList[idx]["img_url"]),
-                        Row(
-                          children: [
-                            Text(testList[idx]["title"]),
-                            Text(testList[idx]["dong"])],
-                        ),
-                        Row(
-                          children: [
-                            Text("${testList[idx]["cost_hr"]}원/시간"),
-                            Icon(Icons.person),
-                            Text("최대 ${testList[idx]["max_people"]}인")],
-                        ),
-                        SizedBox(height: 30,)
-                      ],
+                    child: Padding(
+                      /// 장소 하나 표시하는 패딩
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            /// 장소 이름
+                            width: double.infinity,
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 12.0),
+                              child: Text(testList[idx]["title"],
+                                style: TextStyle(fontSize: 18, color: Color.fromRGBO(51, 51, 51, 1), fontWeight: FontWeight.bold),
+                                textAlign: TextAlign.start,),
+                            )
+                          ),
+                          ClipRRect(
+                            /// 장소 사진 표시
+                            borderRadius: BorderRadius.circular(12.0),
+                            child: Image.asset(testList[idx]["img_url"])
+                          ),
+                          Padding(
+                            /// 장소 주소 표시
+                            padding: const EdgeInsets.fromLTRB(8.0, 12.0, 8.0, 4.0),
+                            child: SizedBox(
+                              width: double.infinity,
+                              child: Text(testList[idx]["dong"],
+                                style: TextStyle(fontSize: 14, color: Color.fromRGBO(102, 102, 102, 1), fontWeight: FontWeight.bold),
+                                textAlign: TextAlign.start,)
+                            )
+                          ),
+                          Padding(
+                            /// 장소 가격, 인원 표시
+                            padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 4.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text("${testList[idx]["cost_hr"]}원/시간", style: lastTextStyle),
+                                Row(
+                                  children: [
+                                    Icon(Icons.person, color: Color.fromRGBO(153, 153, 153, 1)),
+                                    Text("최대 ${testList[idx]["max_people"]}인", style: lastTextStyle,)
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(height: 10),
+                          Divider(height: 1, color: Color.fromRGBO(219, 219, 219, 1), thickness: 1),
+                          SizedBox(height: 20)
+                        ],
+                      ),
                     ),
                   );
                 }
