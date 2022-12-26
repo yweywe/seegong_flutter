@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart'; // 나중에 삭제
 import 'package:seegong_flutter/kakao_auth_module.dart';
-import 'package:seegong_flutter/model/controller.dart';
+import 'package:seegong_flutter/viewModel/controller.dart';
 import 'package:seegong_flutter/screens/LoginScreen.dart';
 import 'package:seegong_flutter/screens/ReservationList.dart';
 
@@ -17,7 +17,7 @@ class NavigationMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final currentUserController = Get.put(UserController());
+    final currentUserController = Get.put(CurrentUserViewModel());
 
     return Drawer(
       child: SingleChildScrollView(

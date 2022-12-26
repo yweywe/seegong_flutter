@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
 import 'package:seegong_flutter/kakao_auth_module.dart';
-import 'package:seegong_flutter/model/controller.dart';
+import 'package:seegong_flutter/viewModel/controller.dart';
 import 'package:seegong_flutter/model/currentUser.dart';
 import 'package:seegong_flutter/screens/Reservation.dart';
 import 'package:seegong_flutter/screens/ReservationResult.dart';
@@ -18,7 +18,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final currentUserController = Get.put(UserController());
+    final currentUserController = Get.put(CurrentUserViewModel());
 
     return Scaffold(
       body: Center(
@@ -62,36 +62,37 @@ class LoginScreen extends StatelessWidget {
                     ),*/
                     ElevatedButton(
                       onPressed: () async {
-                        await kakaoAuth.login();
-                        //setState(() {});
-                        if(kakaoAuth.isLogined) {
-                          User user = await UserApi.instance.me();
-                          var ref = FirebaseDatabase.instance.ref('userToken');
-                          ref.update(
-                              {
-                                "${user.id}" : {
-                                  'email' : "${user.kakaoAccount?.email.toString()}",
-                                  "UserProfile": "${user.kakaoAccount?.profile?.profileImageUrl.toString()}",
-                                  "UserName": "${user.kakaoAccount?.profile?.nickname.toString()}",
-                                  "gender": "${user.kakaoAccount?.gender.toString()}",
-                                  "UserageRange": "${user.kakaoAccount?.ageRange.toString()}",
-                                  "birthday": "${user.kakaoAccount?.birthday.toString()}"
-                                }
-                              }
-                          );
-                          // var value = await ref.orderByValue().equalTo('path').get();
-                          // print('값이 있음?');
-                          // print(value.value);
-                          currentUserController.updateUser(
-                              userToken: '${user.id}',
-                              email: '${user.kakaoAccount?.email}',
-                              userName: '${user.kakaoAccount?.profile?.nickname}',
-                              userPforile: '${user.kakaoAccount?.profile?.profileImageUrl}',
-                              gender: '${user.kakaoAccount?.gender}',
-                              userageRange: '${user.kakaoAccount?.ageRange}',
-                              birthday: '${user.kakaoAccount?.birthday}');
-                          Navigator.pushNamed(context, SpaceSelect.routename);
-                        }
+                        currentUserController.kakaoLogin();
+                        // await kakaoAuth.login();
+                        // //setState(() {});
+                        // if(kakaoAuth.isLogined) {
+                        //   User user = await UserApi.instance.me();
+                        //   var ref = FirebaseDatabase.instance.ref('userToken');
+                        //   ref.update(
+                        //       {
+                        //         "${user.id}" : {
+                        //           'email' : "${user.kakaoAccount?.email.toString()}",
+                        //           "UserProfile": "${user.kakaoAccount?.profile?.profileImageUrl.toString()}",
+                        //           "UserName": "${user.kakaoAccount?.profile?.nickname.toString()}",
+                        //           "gender": "${user.kakaoAccount?.gender.toString()}",
+                        //           "UserageRange": "${user.kakaoAccount?.ageRange.toString()}",
+                        //           "birthday": "${user.kakaoAccount?.birthday.toString()}"
+                        //         }
+                        //       }
+                        //   );
+                        //   // var value = await ref.orderByValue().equalTo('path').get();
+                        //   // print('값이 있음?');
+                        //   // print(value.value);
+                        //   currentUserController.updateCurrentUser(
+                        //       userToken: '${user.id}',
+                        //       email: '${user.kakaoAccount?.email}',
+                        //       userName: '${user.kakaoAccount?.profile?.nickname}',
+                        //       userPforile: '${user.kakaoAccount?.profile?.profileImageUrl}',
+                        //       gender: '${user.kakaoAccount?.gender}',
+                        //       userageRange: '${user.kakaoAccount?.ageRange}',
+                        //       birthday: '${user.kakaoAccount?.birthday}');
+                        //   Navigator.pushNamed(context, SpaceSelect.routename);
+                        // }
                       },
                       child: const Text('Login'),
                     ),/*
@@ -111,3 +112,5 @@ class LoginScreen extends StatelessWidget {
     );
   }
 }
+
+
