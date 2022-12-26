@@ -44,6 +44,7 @@ tb_space tb = new tb_space(
   upd_date: "2010.05.05",
   upd_user: "wws"
 );
+
 var tbb = new tb_except_day(
 
   //2018156021
