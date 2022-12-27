@@ -8,7 +8,6 @@ import 'package:seegong_flutter/screens/Reservation.dart';
 import 'package:seegong_flutter/screens/SpaceSelect.dart';
 import 'package:seegong_flutter/screens/specificScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:seegong_flutter/screens/test.dart';
 import 'firebase_options.dart';
 import 'package:get/get.dart';
 

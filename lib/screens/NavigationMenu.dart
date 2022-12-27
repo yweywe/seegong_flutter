@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart'; // 나중에 삭제
-import 'package:seegong_flutter/kakao_auth_module.dart';
-import 'package:seegong_flutter/viewModel/controller.dart';
-import 'package:seegong_flutter/screens/LoginScreen.dart';
+import 'package:seegong_flutter/viewModel/LoginViewModel.dart';
 import 'package:seegong_flutter/screens/ReservationList.dart';
 
 /// 네비게이션 메뉴 표시 전용 위젯
@@ -12,12 +9,10 @@ class NavigationMenu extends StatelessWidget {
   const NavigationMenu({
     Key? key,
   }) : super(key: key);
-
   static const customDivider = const Padding(
     padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
     child: const Divider(height: 1, color: const Color.fromRGBO(142, 142, 142, 1), thickness: 0.5),
   );
-
   @override
   Widget build(BuildContext context) {
     final currentUserController = Get.put(CurrentUserViewModel());
@@ -29,11 +24,11 @@ class NavigationMenu extends StatelessWidget {
           /// 상단부 계정 헤더
           UserAccountsDrawerHeader(
             currentAccountPicture: CircleAvatar(
-              backgroundImage: AssetImage('images/imgs/wws.jpeg'),
+              backgroundImage: NetworkImage('${currentUserController.user.value.userProfile}'),
               radius: 24,
             ),
-            accountName: Text('testName', style: TextStyle(fontSize: 17, color: Colors.white),),
-            accountEmail: Text('test@gmail.com', style: TextStyle(fontSize: 14, color: Color.fromRGBO(255, 255, 255, 0.4)),),
+            accountName: Text('${currentUserController.user.value.userName}', style: TextStyle(fontSize: 17, color: Colors.white),),
+            accountEmail: Text('${currentUserController.user.value.email}', style: TextStyle(fontSize: 14, color: Color.fromRGBO(255, 255, 255, 0.4)),),
             onDetailsPressed: () {
               print('press details');
             },
@@ -92,7 +87,7 @@ class NavigationMenu extends StatelessWidget {
                       TextButton(
                         onPressed: (){
                           // todo: 로그아웃 기능 추가
-                          Navigator.pop(context);
+                          currentUserController.logout();
                         },
                         child: Text("로그아웃", style: TextStyle(decoration: TextDecoration.underline)),
                         style: ButtonStyle(

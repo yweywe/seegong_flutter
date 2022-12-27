@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:seegong_flutter/screens/Appbar.dart';
 import 'package:seegong_flutter/screens/specificScreen.dart';
+import 'package:seegong_flutter/viewModel/CalendarVIewModel.dart';
 import 'NavigationMenu.dart';
+
 
 class SpaceListScreen extends StatelessWidget {
   const SpaceListScreen({Key? key}) : super(key: key);
@@ -24,18 +27,6 @@ class SpaceListScreen extends StatelessWidget {
         "img_url": "images/imgs/wws.jpeg"
       },
     ];
-
-    var TopButtonStyle = ButtonStyle(
-                  foregroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(153, 153, 153, 1)),
-                  backgroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(255, 255, 255, 1)),
-                  shadowColor: MaterialStateProperty.all<Color>(Colors.transparent),
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(4),
-                          side: BorderSide(color: Color.fromRGBO(0, 0, 0, 0.1), width: 1),
-                      )
-                  )
-    );
 
     return Scaffold(
       drawerEnableOpenDragGesture: false,
@@ -83,42 +74,50 @@ class SpaceListScreen extends StatelessWidget {
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 8.0),
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                // Expanded(flex: 5, child: SizedBox()),
-                Expanded(
-                  flex: 100,
-                  child: ElevatedButton(
-                    style: TopButtonStyle,
-                    onPressed: (){},
-                    child: Text("날짜")
-                  ),
+
+          GetBuilder<CalendarViewModel>(
+            builder: (_) {
+              return Padding(
+                padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 8.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    // Expanded(flex: 5, child: SizedBox()),
+                    Expanded(
+                      flex: 100,
+                      child: PickerButton(
+                        context: context,
+                        description: '날짜 선택',
+                        func: ()=>_.SpecificCalenderView(context),
+                        value: _.reserveDate.DataTimeEditingController,
+                      )
+                    ),
+                    Expanded(flex: 10, child: SizedBox()),
+                    Expanded(
+                      flex: 100,
+                      child: PickerButton(
+                        context: context,
+                        description: '시간 선택',
+                        func: ()=>_.setUsageTime(context),
+                        value: _.reserveDate.InitToEndTime,
+                      )
+                    ),
+                    Expanded(flex: 10, child: SizedBox()),
+                    Expanded(
+                      flex: 100,
+                      child: PickerButton(
+                        context: context,
+                        description: '인원 선택',
+                        func: ()=>_.setUsageTime(context),
+                        value: "",
+                      )
+                    ),
+                    // Expanded(flex: 5, child: SizedBox()),
+                  ],
                 ),
-                Expanded(flex: 10, child: SizedBox()),
-                Expanded(
-                  flex: 100,
-                  child: ElevatedButton(
-                    style: TopButtonStyle,
-                    onPressed: (){},
-                    child: Text("시작시간")
-                  ),
-                ),
-                Expanded(flex: 10, child: SizedBox()),
-                Expanded(
-                  flex: 100,
-                  child: ElevatedButton(
-                    style: TopButtonStyle,
-                    onPressed: (){},
-                    child: Text("인원")
-                  ),
-                ),
-                // Expanded(flex: 5, child: SizedBox()),
-              ],
-            ),
+              );
+            }
           ),
           Expanded(
             child: ListView.builder(

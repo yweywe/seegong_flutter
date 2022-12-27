@@ -3,6 +3,7 @@ import 'package:seegong_flutter/etc/ReserveTextClass.dart';
 
 import 'package:seegong_flutter/screens/Appbar.dart';
 import 'package:seegong_flutter/screens/NavigationMenu.dart';
+import 'package:seegong_flutter/screens/SpaceSelect.dart';
 
 import '../etc/shadow.dart';
 
@@ -213,11 +214,11 @@ class _ResultScreenState extends State<ResultScreen> {
               SizedBox(height: 20,),
               GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, ResultScreen.routename);
+                  Navigator.pushNamed(context, SpaceSelect.routename);
                 },
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
-                  child: ColorButton(buttonText:'에약 신청하기',),
+                  child: ColorButton(buttonText:'메인으로 돌아가기',),
                 ),
               ),
             ],
