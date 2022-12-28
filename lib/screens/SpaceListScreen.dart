@@ -138,7 +138,7 @@ class SpaceListScreen extends StatelessWidget {
                             width: double.infinity,
                             child: Padding(
                               padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 12.0),
-                              child: Text(testList[idx]["title"],
+                              child: Text(testList[idx]["title"], /// tb_space -> space_name
                                 style: TextStyle(fontSize: 18, color: Color.fromRGBO(51, 51, 51, 1), fontWeight: FontWeight.bold),
                                 textAlign: TextAlign.start,),
                             )
@@ -146,14 +146,14 @@ class SpaceListScreen extends StatelessWidget {
                           ClipRRect(
                             /// 장소 사진 표시
                             borderRadius: BorderRadius.circular(12.0),
-                            child: Image.asset(testList[idx]["img_url"])
+                            child: Image.asset(testList[idx]["img_url"]) /// tb_space_image -> image_index_store_file
                           ),
                           Padding(
                             /// 장소 주소 표시
                             padding: const EdgeInsets.fromLTRB(8.0, 12.0, 8.0, 4.0),
                             child: SizedBox(
                               width: double.infinity,
-                              child: Text(testList[idx]["dong"],
+                              child: Text(testList[idx]["dong"], /// tb_space -> addr
                                 style: TextStyle(fontSize: 14, color: Color.fromRGBO(102, 102, 102, 1), fontWeight: FontWeight.bold),
                                 textAlign: TextAlign.start,)
                             )
@@ -164,6 +164,8 @@ class SpaceListScreen extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
+                                /// 현 테이블에 없음(우리 정했었나?) => tb_space_price -> default_fee_r
+                                /// 혹은 tb_space -> free_yn (yes/no인데 15B 컬럼인 것이 해당 정보가 있을 듯 함)
                                 Text("${testList[idx]["cost_hr"]}원/시간", style: lastTextStyle),
                                 Row(
                                   children: [

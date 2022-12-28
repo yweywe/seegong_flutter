@@ -27,7 +27,6 @@ class NavigationMenu extends StatelessWidget {
             currentAccountPicture: CircleAvatar(
               backgroundImage: NetworkImage('${currentUserController.user.value.userProfile}'),
               radius: 24,
-                Navigator.pop(context);
             ),
             accountName: Text('${currentUserController.user.value.userName}', style: TextStyle(fontSize: 17, color: Colors.white),),
             accountEmail: Text('${currentUserController.user.value.email}', style: TextStyle(fontSize: 14, color: Color.fromRGBO(255, 255, 255, 0.4)),),
