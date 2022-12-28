@@ -28,6 +28,7 @@ class LoginScreen extends StatelessWidget {
                         Image.asset(
                           'assets/images/glob_top_img_none.png',
                         ),
+                              {
                         Divider(height: 64, color: Colors.transparent),
                         Container(
                           width: 295,
