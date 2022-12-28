@@ -45,15 +45,6 @@ tb_space tb = new tb_space(
   upd_user: "wws"
 );
 
-var tbb = new tb_except_day(
-
-  //2018156021
-  //    2018156029
-  //  2017142003
-);
-
-
-
 class test extends StatefulWidget {
   const test({Key? key}) : super(key: key);
 

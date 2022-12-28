@@ -1,4 +1,3 @@
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -6,10 +5,6 @@ import 'package:seegong_flutter/viewModel/LoginViewModel.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
-
-  Future dummy() {
-    return Future.delayed(Duration.zero);
-  }
   @override
   Widget build(BuildContext context) {
     final currentUserController = Get.put(CurrentUserViewModel());

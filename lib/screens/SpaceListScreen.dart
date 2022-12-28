@@ -27,7 +27,6 @@ class SpaceListScreen extends StatelessWidget {
         "img_url": "images/imgs/wws.jpeg"
       },
     ];
-
     return Scaffold(
       drawerEnableOpenDragGesture: false,
       appBar: Appbarseegong,
@@ -74,8 +73,8 @@ class SpaceListScreen extends StatelessWidget {
               ],
             ),
           ),
-
           GetBuilder<CalendarViewModel>(
+            init: new CalendarViewModel(),
             builder: (_) {
               return Padding(
                 padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 8.0),
