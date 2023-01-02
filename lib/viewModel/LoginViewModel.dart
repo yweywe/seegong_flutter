@@ -4,20 +4,29 @@ import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
 import 'package:seegong_flutter/model/currentUser.dart';
 import 'package:seegong_flutter/screens/LoginScreen.dart';
 import 'package:seegong_flutter/screens/SpaceSelect.dart';
+import 'package:seegong_flutter/viewModel/CalendarVIewModel.dart';
+import 'package:seegong_flutter/viewModel/SpaceViewModel.dart';
 
 class CurrentUserViewModel extends GetxController{
   late Rx<CurrentUser> user = new CurrentUser().obs;
 
-  @override
-  void onInit() {
-    super.onInit();
+  void delLiveData() {
+    Get.delete<CalendarViewModel>();
+    Get.delete<SpaceViewModel>();
   }
 
 
   //로그아웃
   void logout() async{
     await UserApi.instance.logout();
-    Get.to(() => LoginScreen());
+    delLiveData();
+    Get.offAll(LoginScreen());
+  }
+
+  void returnMainScreen() {
+    delLiveData();
+    Get.offAll(SpaceSelect());
+
   }
 
   //토큰 확인
@@ -25,18 +34,19 @@ class CurrentUserViewModel extends GetxController{
     return await AuthApi.instance.hasToken();
   }
 
-  //
+  ///CheckApp if App have token -> go SpaceSelectScreen
   Future<dynamic> checkTokeninAPP() async{
     if (await isToken()) {
       User user = await UserApi.instance.me(); //Kakao auth User
       validLogin(user);
-      Get.to(() => SpaceSelect());
+      Get.offAll(SpaceSelect());
     }
     else {
-      return await isToken();
+      return '123';
     }
   }
 
+  ///KakaoLogin()
   void kakaoLogin() async{
     //토큰 조회
     if (await isToken()) {
@@ -45,9 +55,6 @@ class CurrentUserViewModel extends GetxController{
         await UserApi.instance.accessTokenInfo();
         print('토큰 유효성 체크 성공 ${tokenInfo.id} ${tokenInfo.expiresIn}');
 
-        User user = await UserApi.instance.me(); //Kakao auth User
-        validLogin(user);
-        Get.to(() => SpaceSelect());
       } catch (error) {
         if (error is KakaoException && error.isInvalidTokenError()) {
           print('토큰 만료 $error');
@@ -72,8 +79,8 @@ class CurrentUserViewModel extends GetxController{
 
         User user = await UserApi.instance.me(); //Kakao auth User
         validLogin(user);
-        setNewUserToFirebase(user);
-
+        await setNewUserToFirebase(user);
+        Get.offAll(SpaceSelect());
         print('로그인 성공 ${token.accessToken}');
       } catch (error) {
         print('로그인 실패 $error');
@@ -82,7 +89,8 @@ class CurrentUserViewModel extends GetxController{
   }
 
 
-  void setNewUserToFirebase(User user) async{
+  ///Post new membert imformation to server(FirebaseRealtimeDatabase)
+  setNewUserToFirebase(User user) async{
     var ref = FirebaseDatabase.instance.ref('userToken');
     ref.update(
         {
@@ -97,6 +105,9 @@ class CurrentUserViewModel extends GetxController{
         }
     );
   }
+
+
+  ///Create New Current User(While Using App)
   void validLogin(User user) {
     updateCurrentUser(
         userToken: '${user.id}',
@@ -107,7 +118,6 @@ class CurrentUserViewModel extends GetxController{
         userageRange: '${user.kakaoAccount?.ageRange}',
         birthday: '${user.kakaoAccount?.birthday}');
   }
-
   updateCurrentUser(
       {
         required String userToken,

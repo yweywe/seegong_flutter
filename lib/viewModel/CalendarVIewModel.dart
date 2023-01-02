@@ -33,12 +33,14 @@ var SlectedTopButtonStyle = ButtonStyle(
     )
 );
 class CalendarViewModel extends GetxController{
-  var reserveDate = new ReservationDayDate();
+  var reserveDate = new ReservationDayDate(); ///시간과 날짜 표시를 위한 Class
   @override
   void onInit() {
     // TODO: implement onInit
     super.onInit();
   }
+
+  ///텍스트 위젯
   TextIf(BuildContext context, String description, String setvar, VoidCallback func ) {
     if (setvar == "") {
       return ElevatedButton(
@@ -56,13 +58,17 @@ class CalendarViewModel extends GetxController{
     }
   }
 
-
+  ///시간 계산
   String ShowTime() {
     String time = "";
     time += reserveDate.InitTimeHourController;
     time += reserveDate.EndTimeHourController;
     return time;
   }
+
+
+
+  ///CalendarWidget
   void SpecificCalenderView(BuildContext context) {
     showCupertinoDialog(
         context: context,
@@ -134,6 +140,8 @@ class CalendarViewModel extends GetxController{
     update();
   }
 
+
+  ///시간 변환 함수
   void convertDateTimeDisplay(String date) {
     final DateFormat displayFormater = DateFormat('yyyy-MM-dd HH:mm:ss.SSS');
     final DateFormat serverFormater = DateFormat('yyyy-MM-dd');
@@ -143,6 +151,8 @@ class CalendarViewModel extends GetxController{
     update();
   }
 
+
+  ///TImePicker
   void setUsageTime(BuildContext context) {
     showCupertinoDialog(
         context: context, builder: (context){
@@ -208,6 +218,9 @@ class CalendarViewModel extends GetxController{
   }
 }
 
+
+
+///PcikerButton Widget
 class PickerButton extends StatefulWidget {
   BuildContext context;
   String description;

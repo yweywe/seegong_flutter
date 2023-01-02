@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:seegong_flutter/screens/Appbar.dart';
 import 'package:seegong_flutter/screens/NavigationMenu.dart';
 import 'package:seegong_flutter/screens/SpaceListScreen.dart';
-import 'package:seegong_flutter/screens/SpaceSelect.dart';
+import 'package:seegong_flutter/viewModel/LoginViewModel.dart';
 
 class ReservationList extends StatelessWidget{
-  const ReservationList({Key? key}) : super(key: key);
+  ReservationList({Key? key}) : super(key: key);
   static final routename = '/ReservationList';
+  final currentUser = Get.put(CurrentUserViewModel());
 
   static const customDivider = const Padding(
     padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
@@ -50,7 +52,7 @@ class ReservationList extends StatelessWidget{
                 // mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("???님의 예약 내역입니다.", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color.fromRGBO(51, 51, 51, 1)),),
+                  Text("${currentUser.user.value.userName}님의 예약 내역입니다.", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color.fromRGBO(51, 51, 51, 1)),),
                   Divider(height: 12, color: Colors.transparent),
                   Text("총 예약내역 ?건", style: TextStyle(fontSize: 14, color: Color.fromRGBO(92, 94, 91, 1)),),
                 ],

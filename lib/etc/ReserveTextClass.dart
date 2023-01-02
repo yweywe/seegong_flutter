@@ -6,10 +6,12 @@ class ReserveTextFiled extends StatelessWidget {
   String textformSubject;
   String textformHint;
   int? maxline;
+  TextEditingController textController;
   ReserveTextFiled({Key? key,
     this.escential = true,
     required this.textformSubject,
     required this.textformHint,
+    required this.textController,
     this.maxline = 1
   }) : super(key: key);
 
@@ -42,6 +44,7 @@ class ReserveTextFiled extends StatelessWidget {
                 child: Container(
                   height: maxline == 1? 35 : null,
                   child: TextField(
+                    controller: textController,
                     textAlign: TextAlign.start,
                     maxLines: maxline,
                     decoration: InputDecoration(

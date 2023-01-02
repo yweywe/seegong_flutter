@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:seegong_flutter/viewModel/AppBarViewmodel.dart';
 import 'package:seegong_flutter/viewModel/LoginViewModel.dart';
-import 'package:seegong_flutter/screens/ReservationList.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -51,104 +51,109 @@ class NavigationMenu extends StatelessWidget {
           ),
           Expanded(
             /// 공지사항 등 본문
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                /// 본문 아이콘 나열
-                Column(
+            child: GetBuilder(
+              init: new AppBarViewMdoel(),
+              builder: (_) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisSize: MainAxisSize.max,
                   children: [
-                    ListTile(
-                      // leading: Icon(Icons.notifications),
-                      title: Text(
-                        '공지사항',
-                        style: TextStyle(
-                            fontSize: 14,
-                            color: Color.fromRGBO(51, 51, 51, 1),
-                            fontWeight: FontWeight.bold),
-                      ),
-                      onTap: () {
-                        //Navigator.pop(context);
-                        launchUrl(
-                          Uri.parse(
-                              "https://share.siheung.go.kr/board/board_list.do?gidx=0001&pageIndex=1&key=105000"),
-                        );
-                      },
-                    ),
-                    customDivider,
-                    ListTile(
-                      // leading: Icon(Icons.help),
-                      title: Text(
-                        '도움말',
-                        style: TextStyle(
-                            fontSize: 14,
-                            color: Color.fromRGBO(51, 51, 51, 1),
-                            fontWeight: FontWeight.bold),
-                      ),
-                      onTap: () {
-                        //Navigator.pop(context);
-                        launchUrl(
-                          Uri.parse(
-                              "https://share.siheung.go.kr/contents/contents.do?gidx=130102&key=102000"),
-                        );
-                      },
-                    ),
-                    customDivider,
-                    ListTile(
-                      // leading: Icon(Icons.list),
-                      title: Text(
-                        "예약내역",
-                        style: TextStyle(
-                            fontSize: 14,
-                            color: Color.fromRGBO(51, 51, 51, 1),
-                            fontWeight: FontWeight.bold),
-                      ),
-                      onTap: () {
-                        Navigator.pushNamed(context, ReservationList.routename);
-                      },
-                    ),
-                    customDivider,
-                    ListTile(
-                      // leading: Icon(Icons.call),
-                      title: Text(
-                        "문의하기",
-                        style: TextStyle(
-                            fontSize: 14,
-                            color: Color.fromRGBO(51, 51, 51, 1),
-                            fontWeight: FontWeight.bold),
-                      ),
-                      onTap: () => launchUrlString("tel:0313106043"),
-                      //onTap: () {
-                        //Navigator.pop(context);
+                    /// 본문 아이콘 나열
+                    Column(
+                      children: [
+                        ListTile(
+                          // leading: Icon(Icons.notifications),
+                          title: Text(
+                            '공지사항',
+                            style: TextStyle(
+                                fontSize: 14,
+                                color: Color.fromRGBO(51, 51, 51, 1),
+                                fontWeight: FontWeight.bold),
+                          ),
+                          onTap: () {
+                            //Navigator.pop(context);
+                            launchUrl(
+                              Uri.parse(
+                                  "${_.NoticeUrl}"),
+                            );
+                          },
+                        ),
+                        customDivider,
+                        ListTile(
+                          // leading: Icon(Icons.help),
+                          title: Text(
+                            '도움말',
+                            style: TextStyle(
+                                fontSize: 14,
+                                color: Color.fromRGBO(51, 51, 51, 1),
+                                fontWeight: FontWeight.bold),
+                          ),
+                          onTap: () {
+                            //Navigator.pop(context);
+                            launchUrl(
+                              Uri.parse(
+                                  "${_.HelpUrl}"),
+                            );
+                          },
+                        ),
+                        customDivider,
+                        ListTile(
+                          // leading: Icon(Icons.list),
+                          title: Text(
+                            "예약내역",
+                            style: TextStyle(
+                                fontSize: 14,
+                                color: Color.fromRGBO(51, 51, 51, 1),
+                                fontWeight: FontWeight.bold),
+                          ),
+                          onTap: () {
+                            _.getReservationList();
+                          },
+                        ),
+                        customDivider,
+                        ListTile(
+                          // leading: Icon(Icons.call),
+                          title: Text(
+                            "문의하기",
+                            style: TextStyle(
+                                fontSize: 14,
+                                color: Color.fromRGBO(51, 51, 51, 1),
+                                fontWeight: FontWeight.bold),
+                          ),
+                          onTap: () => launchUrlString("${_.Tel}"),
+                          //onTap: () {
+                            //Navigator.pop(context);
 
-                      //},
+                          //},
+                        ),
+                      ],
+                    ),
+
+                    /// 로그인 버튼 시작
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(16.0, 0, 16.0, 128.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          TextButton(
+                            onPressed: () {
+                              // todo: 로그아웃 기능 추가
+                              currentUserController.logout();
+                            },
+                            child: Text("로그아웃",
+                                style: TextStyle(
+                                    decoration: TextDecoration.underline)),
+                            style: ButtonStyle(
+                              foregroundColor: MaterialStateProperty.all(
+                                  Color.fromRGBO(153, 153, 153, 1)),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
-                ),
-
-                /// 로그인 버튼 시작
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(16.0, 0, 16.0, 128.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      TextButton(
-                        onPressed: () {
-                          // todo: 로그아웃 기능 추가
-                          currentUserController.logout();
-                        },
-                        child: Text("로그아웃",
-                            style: TextStyle(
-                                decoration: TextDecoration.underline)),
-                        style: ButtonStyle(
-                          foregroundColor: MaterialStateProperty.all(
-                              Color.fromRGBO(153, 153, 153, 1)),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+                );
+              }
             ),
           ),
         ],
