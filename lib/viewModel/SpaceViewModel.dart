@@ -58,8 +58,12 @@ class SpaceViewModel extends GetxController {
     userRecipt?.remark = "${inputText.remark.text}"; //비고
   }
   void postUserRecipt(ReservationDayDate date, CurrentUser user) async{
+    /*
     if (!(inputText.email.text == "") || !(inputText.name.text == "")
         || !(inputText.usePurpose.text.isEmpty == "") || !(inputText.mobilephone.text.isEmpty == ""))
+     */
+    if ((inputText.email.text.isEmpty) || (inputText.name.text.isEmpty)
+      || (inputText.usePurpose.text.isEmpty) || (inputText.mobilephone.text.isEmpty) || (inputText.remark.text.isEmpty))
       {
         alertCheckReservationItem();
       }
