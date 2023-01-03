@@ -22,6 +22,7 @@ class SpaceViewModel extends GetxController {
   tb_space_receipt? userRecipt;
   ReseravationTextEditing inputText = new ReseravationTextEditing();
 
+
   var useTotalTIme;
   @override
   void onInit() {
@@ -118,7 +119,6 @@ class SpaceViewModel extends GetxController {
       spaceListFromFB.add(tempValue);
     }
     fbState = 1;
-    print(spaceListFromFB);
     update();
   }
 

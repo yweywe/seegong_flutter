@@ -22,6 +22,9 @@ class tb_space_receipt {
   String? remark;
   String? regDate;
 
+  String? space_nmae;
+  String? addr;
+
   tb_space_receipt(
       {this.receiptNo,
         this.spaceNo,

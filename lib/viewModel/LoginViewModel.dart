@@ -1,7 +1,11 @@
+import 'dart:convert';
+
 import 'package:firebase_database/firebase_database.dart';
 import 'package:get/get.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
 import 'package:seegong_flutter/model/currentUser.dart';
+import 'package:seegong_flutter/model/tb_space.dart';
+import 'package:seegong_flutter/model/tb_space_receipt.dart';
 import 'package:seegong_flutter/screens/LoginScreen.dart';
 import 'package:seegong_flutter/screens/SpaceSelect.dart';
 import 'package:seegong_flutter/viewModel/CalendarVIewModel.dart';
@@ -9,6 +13,49 @@ import 'package:seegong_flutter/viewModel/SpaceViewModel.dart';
 
 class CurrentUserViewModel extends GetxController{
   late Rx<CurrentUser> user = new CurrentUser().obs;
+  int checkState = 0;
+  List<tb_space_receipt> reservList = [];
+  List<tb_space> spaceList = [];
+
+  Future<void> getSpaceListFromFB() async{
+    await getReservationListFromFB();
+    Set spaceNo = {};
+    for (var i in reservList) {
+      spaceNo.add("${i.spaceNo}");
+    }
+
+    DatabaseReference ref = FirebaseDatabase.instance.ref('tb_space');
+    var refValue = await ref.get();
+    var value = jsonDecode(jsonEncode(refValue.value));
+
+    for (var i in value) {
+      var tempValue = tb_space.fromJson(i);
+      spaceList.add(tempValue);
+    }
+
+    print(spaceList.length);
+    checkState = 1;
+    update();
+  }
+
+
+  Future<void> getReservationListFromFB() async{
+    print(checkState);
+    DatabaseReference ref = FirebaseDatabase.instance.ref('receipt/tb_space_receipt/');
+    print('2');
+    var refValue = await ref.orderByChild("user_id").equalTo(user.value.userToken).once();
+    print('3');
+    print(refValue.snapshot.value);
+    var value = jsonDecode(jsonEncode(refValue.snapshot.value));
+    for (Map<String, dynamic> i in value) {
+      var tempValue = tb_space_receipt.fromJson(i);
+      reservList.add(tempValue);
+    }
+    print(reservList.length);
+    checkState = 1;
+    update();
+  }
+
 
   void delLiveData() {
     Get.delete<CalendarViewModel>();
@@ -88,7 +135,10 @@ class CurrentUserViewModel extends GetxController{
     }
   }
 
+  getCurrentUserReservationListFromFB() async {
+    var ref = FirebaseDatabase.instance.ref('userToken');
 
+  }
   ///Post new membert imformation to server(FirebaseRealtimeDatabase)
   setNewUserToFirebase(User user) async{
     var ref = FirebaseDatabase.instance.ref('userToken');
@@ -105,6 +155,7 @@ class CurrentUserViewModel extends GetxController{
         }
     );
   }
+
 
 
   ///Create New Current User(While Using App)
