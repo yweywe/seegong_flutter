@@ -35,6 +35,7 @@ class tb_space {
   String? reg_user;
   String? upd_date;
   String? upd_user;
+  String? space_image;
 
   tb_space(
       {this.space_no,
@@ -70,7 +71,9 @@ class tb_space {
         this.reg_date,
         this.reg_user,
         this.upd_date,
-        this.upd_user});
+        this.upd_user,
+        this.space_image,
+      });
 
   tb_space.fromJson(Map<String, dynamic> json) {
     space_no = json['space_no'];
@@ -107,6 +110,7 @@ class tb_space {
     reg_user = json['reg_user'];
     upd_date = json['upd_date'];
     upd_user = json['upd_user'];
+    space_image = json['space_image'];
   }
 
   Map<String, dynamic> toJson() {
@@ -145,6 +149,7 @@ class tb_space {
     data['reg_user'] = this.reg_user;
     data['upd_date'] = this.upd_date;
     data['upd_user'] = this.upd_user;
+    data['space_image'] = this.space_image;
     return data;
   }
 }
