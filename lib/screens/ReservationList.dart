@@ -20,8 +20,12 @@ class ReservationList extends StatelessWidget{
 
 
     return FutureBuilder(
-      future: currentUser.getSpaceListFromFB(),
+      future: currentUser.getReservationListFromFB(),
       builder: (context, snapshot) {
+        if (currentUser.checkState == 0) {
+          return CircularProgressIndicator();
+        }
+        else
         return Scaffold(
           drawerEnableOpenDragGesture: false,
           appBar: Appbarseegong,

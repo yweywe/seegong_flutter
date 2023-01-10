@@ -18,7 +18,9 @@ class CurrentUserViewModel extends GetxController{
   List<tb_space> spaceList = [];
 
   Future<void> getSpaceListFromFB() async{
+    print("퓨처함수 시작");
     await getReservationListFromFB();
+    print("어웨이트 끝");
     Set spaceNo = {};
     for (var i in reservList) {
       spaceNo.add("${i.spaceNo}");
@@ -40,18 +42,16 @@ class CurrentUserViewModel extends GetxController{
 
 
   Future<void> getReservationListFromFB() async{
-    print(checkState);
     DatabaseReference ref = FirebaseDatabase.instance.ref('receipt/tb_space_receipt/');
-    print('2');
     var refValue = await ref.orderByChild("user_id").equalTo(user.value.userToken).once();
-    print('3');
-    print(refValue.snapshot.value);
-    var value = jsonDecode(jsonEncode(refValue.snapshot.value));
-    for (Map<String, dynamic> i in value) {
+    var value = refValue.snapshot.value;
+    var temp = jsonDecode(jsonEncode(value));
+    for (var i in temp) {
+      if (i == null)
+        continue;
       var tempValue = tb_space_receipt.fromJson(i);
       reservList.add(tempValue);
     }
-    print(reservList.length);
     checkState = 1;
     update();
   }
