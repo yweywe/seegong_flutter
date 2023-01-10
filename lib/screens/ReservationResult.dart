@@ -42,7 +42,7 @@ class _ResultScreenState extends State<ResultScreen> {
                       borderRadius: BorderRadius.circular(10),
                       image: DecorationImage(
                         fit: BoxFit.fill,
-                        image: AssetImage('images/imgs/wws.jpeg'),
+                        image: NetworkImage("${_.currentSpace.space_image}"), // tb_space.space_image
                       )
                   ),
                 ),

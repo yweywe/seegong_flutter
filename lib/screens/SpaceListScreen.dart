@@ -158,7 +158,7 @@ class SpaceListScreen extends StatelessWidget {
                               ClipRRect(
                                 /// 장소 사진 표시
                                 borderRadius: BorderRadius.circular(12.0),
-                                child: Image.asset('images/icons/wws.jpeg') /// tb_space_image -> image_index_store_file
+                                child: Image.network("${__.spaceListFromFB[idx].space_image}"), // tb_space.space_image
                               ),
                               Padding(
                                 /// 장소 주소 표시

@@ -93,6 +93,7 @@ class ReservationList extends StatelessWidget{
                                       child: ClipRRect(
                                         borderRadius: BorderRadius.circular(8.0),
                                         child: Image.asset('images/imgs/wws.jpeg', fit: BoxFit.cover,)
+                                        //child: Image.network("${__.spaceListFromFB[idx].space_image}"), // tb_space.space_image
                                       ),
                                     ),
                                   ),

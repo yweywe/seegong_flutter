@@ -40,11 +40,10 @@ class _SpecificScreenState extends State<SpecificScreen> {
                     width: double.infinity,
                     height: 240,
                     decoration: BoxDecoration(
-                        image: DecorationImage(
-                            fit: BoxFit.fill,
-                            //image: AssetImage('${t1.imgurl}')
-                            image: AssetImage('images/icons/wws.jpeg')
-                        )
+                      image: DecorationImage(
+                        fit: BoxFit.fill,
+                        image: NetworkImage("${_.currentSpace.space_image}"), // tb_space.space_image
+                      )
                     ),
                   ),
                   SizedBox(height: 15,),
