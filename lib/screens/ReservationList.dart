@@ -23,7 +23,7 @@ class ReservationList extends StatelessWidget{
       future: currentUser.getReservationListFromFB(),
       builder: (context, snapshot) {
         if (currentUser.checkState == 0) {
-          return CircularProgressIndicator();
+          return Scaffold(body: Center(child: CircularProgressIndicator()));
         }
         else
         return Scaffold(
