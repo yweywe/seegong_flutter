@@ -3,10 +3,7 @@ import 'dart:convert';
 
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:seegong_flutter/model/tb_except_day.dart';
-import 'package:seegong_flutter/model/tb_login.dart';
 import 'package:seegong_flutter/model/tb_space.dart';
-import 'package:seegong_flutter/model/tb_space_desc.dart';
 
 tb_space tb = new tb_space(
   space_no: "1",
@@ -44,15 +41,6 @@ tb_space tb = new tb_space(
   upd_date: "2010.05.05",
   upd_user: "wws"
 );
-
-var tbb = new tb_except_day(
-
-  //2018156021
-  //    2018156029
-  //  2017142003
-);
-
-
 
 class test extends StatefulWidget {
   const test({Key? key}) : super(key: key);
