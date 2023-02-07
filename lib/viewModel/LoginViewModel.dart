@@ -136,7 +136,6 @@ class CurrentUserViewModel extends GetxController{
   }
 
   getCurrentUserReservationListFromFB() async {
-    var ref = FirebaseDatabase.instance.ref('userToken');
 
   }
   ///Post new membert imformation to server(FirebaseRealtimeDatabase)

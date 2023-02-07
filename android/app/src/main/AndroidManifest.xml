@@ -18,9 +18,9 @@
 
    <application
 
-        android:label="seegong_flutter"
+        android:label="시소"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
 
 
        <meta-data android:name="com.google.android.geo.API_KEY"
