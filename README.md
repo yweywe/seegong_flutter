@@ -35,7 +35,7 @@
 
 ![날짜-및-시간-지정](https://user-images.githubusercontent.com/103064352/230341229-6f2090e0-4a2b-41c4-b8b8-8504708ccda3.gif)
 
-![도움말](https://user-images.githubusercontent.com/103064352/230335240-102fe8cb-32ed-45dd-a229-076606dd397e.gif)
+![도움말](https://user-images.githubusercontent.com/103064352/230345680-e7ebe8b4-b1d8-48af-9b7d-7e82e0604147.gif)
 
 ![오어스](https://user-images.githubusercontent.com/103064352/230344767-44cbdfb3-c14e-46ca-abb4-5f5a44f80d5d.gif)
 
@@ -56,10 +56,10 @@
 ### fireBase의 Realtime Database를 활용하여 NoSql 임시 데이터 베이스 구축
 - [전체 사진](https://user-images.githubusercontent.com/103064352/230302426-f0c5f7bd-243f-43e2-9ead-bac36686322a.png)
 - 공간 소유주 개인정보
-<img width="586" alt="스크린샷 2023-04-06 오후 5 50 23" src="https://user-images.githubusercontent.com/103064352/230326338-b315187a-e1c5-4a5b-9ee9-5c4e8e3f262b.png">{: width="40%" height="40%"}
+<img width="586" alt="스크린샷 2023-04-06 오후 5 50 23" src="https://user-images.githubusercontent.com/103064352/230326338-b315187a-e1c5-4a5b-9ee9-5c4e8e3f262b.png">
 
 - 사용자 개인정보
-<img width="1051" alt="스크린샷 2023-04-06 오후 5 51 50" src="https://user-images.githubusercontent.com/103064352/230326043-6cbc24b0-39c2-48a5-ac7e-817f24bb3e00.png">{: width="40%" height="40%"}
+<img width="1051" alt="스크린샷 2023-04-06 오후 5 51 50" src="https://user-images.githubusercontent.com/103064352/230326043-6cbc24b0-39c2-48a5-ac7e-817f24bb3e00.png">
 
 - 사용자 예약 정보
-<img width="414" alt="스크린샷 2023-04-06 오후 5 56 26" src="https://user-images.githubusercontent.com/103064352/230327543-57e44fff-692c-43c1-b91e-9f59039d3ee7.png">{: width="40%" height="40%"}
+<img width="414" alt="스크린샷 2023-04-06 오후 5 56 26" src="https://user-images.githubusercontent.com/103064352/230327543-57e44fff-692c-43c1-b91e-9f59039d3ee7.png">
