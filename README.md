@@ -26,14 +26,17 @@
 
 
 ## 서버 소개
+#
 - 상황
- - 실제 서비스의 서버 활용 불가 (서버 API 활용 불가)
- - 실제 서비스의 DB전부 활용 어려움
+    - 실제 서비스의 서버 활용 불가 (서버 API 활용 불가)
+    - 실제 서비스의 DB전부 활용 어려움
  
 - 개발
- - 실제 서비스하는 DB를 훑고 필요한 부분 개발
- - 임시로 활용할 [Google FireBase](https://firebase.google.com/?hl=ko)활용
-
+    - 실제 서비스하는 DB를 훑고 필요한 부분 개발
+    - 임시로 활용할 [Google FireBase](https://firebase.google.com/?hl=ko)활용
+    
+## DB구축
+#
 ### fireBase의 Realtime Database를 활용하여 NoSql 임시 데이터 베이스 구축
 - [전체 사진] (https://user-images.githubusercontent.com/103064352/230302426-f0c5f7bd-243f-43e2-9ead-bac36686322a.png)
 - 사진1
