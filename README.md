@@ -21,25 +21,33 @@
 ![android studio logo](https://img.shields.io/badge/Android_Studio-3DDC84?style=flat&logo=androidstudio&logoColor=white)
 ![kakao logo](https://img.shields.io/badge/kakao_map_SDK-FFCD00?style=flat&logo=kakao&logoColor=black)
 ![kakao logo](https://img.shields.io/badge/kakao_login_SDK-FFCD00?style=flat&logo=kakao&logoColor=black)
-
+![firebase logo](https://img.shields.io/badge/firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black)
+    
+    
+      
 ![getx logo](https://raw.githubusercontent.com/jonataslaw/getx-community/master/get.png)
 
-
+  
+  
+  
 ## 서버 소개
-#
 - 상황
     - 실제 서비스의 서버 활용 불가 (서버 API 활용 불가)
     - 실제 서비스의 DB전부 활용 어려움
  
 - 개발
     - 실제 서비스하는 DB를 훑고 필요한 부분 개발
-    - 임시로 활용할 [Google FireBase](https://firebase.google.com/?hl=ko)활용
-    
+    - 임시로 활용할 [Google FireBase](https://firebase.google.com/?hl=ko)활용하여 개발
+  
+  
 ## DB구축
-#
 ### fireBase의 Realtime Database를 활용하여 NoSql 임시 데이터 베이스 구축
-- [전체 사진] (https://user-images.githubusercontent.com/103064352/230302426-f0c5f7bd-243f-43e2-9ead-bac36686322a.png)
-- 사진1
-- 사진2
+- [전체 사진](https://user-images.githubusercontent.com/103064352/230302426-f0c5f7bd-243f-43e2-9ead-bac36686322a.png)
+- 공간 소유주 개인정보
+<img width="586" alt="스크린샷 2023-04-06 오후 5 50 23" src="https://user-images.githubusercontent.com/103064352/230326338-b315187a-e1c5-4a5b-9ee9-5c4e8e3f262b.png">
 
+- 사용자 개인정보
+<img width="1051" alt="스크린샷 2023-04-06 오후 5 51 50" src="https://user-images.githubusercontent.com/103064352/230326043-6cbc24b0-39c2-48a5-ac7e-817f24bb3e00.png">
 
+- 사용자 예약 정보
+<img width="414" alt="스크린샷 2023-04-06 오후 5 56 26" src="https://user-images.githubusercontent.com/103064352/230327543-57e44fff-692c-43c1-b91e-9f59039d3ee7.png">
