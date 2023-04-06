@@ -37,8 +37,7 @@
 
 ![도움말](https://user-images.githubusercontent.com/103064352/230335240-102fe8cb-32ed-45dd-a229-076606dd397e.gif)
 
-[전체영상](https://github.com/yweDev/seegong_flutter/issues/3#issuecomment-1498783699)
-
+![오어스](https://user-images.githubusercontent.com/103064352/230344767-44cbdfb3-c14e-46ca-abb4-5f5a44f80d5d.gif)
 
 
  
