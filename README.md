@@ -31,13 +31,11 @@
 
 ## 시연 영상
 
-<img width="414" alt="스크린샷 2023-04-06 오후 5 56 26" src="https://user-images.githubusercontent.com/103064352/230327543-57e44fff-692c-43c1-b91e-9f59039d3ee7.png">{: width="40%" height="40%"}
 ![공간-소개](https://user-images.githubusercontent.com/103064352/230341580-802d219a-147c-458d-92e2-c6c610ed573a.gif)
 
 ![날짜-및-시간-지정](https://user-images.githubusercontent.com/103064352/230341229-6f2090e0-4a2b-41c4-b8b8-8504708ccda3.gif)
 
-![도움말](https://user-images.githubusercontent.com/103064352/230335240-102fe8cb-32ed-45dd-a229-076606dd397e.gif){: width="25%" height="25%"}
-
+![도움말](https://user-images.githubusercontent.com/103064352/230335240-102fe8cb-32ed-45dd-a229-076606dd397e.gif)
 
 [전체영상](https://github.com/yweDev/seegong_flutter/issues/3#issuecomment-1498783699)
 
