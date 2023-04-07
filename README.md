@@ -42,7 +42,8 @@
 ![소셜로그인](https://user-images.githubusercontent.com/103064352/230344767-44cbdfb3-c14e-46ca-abb4-5f5a44f80d5d.gif)
 > [kakao_flutter_sdk_user](https://pub.dev/packages/kakao_flutter_sdk_user)를 통해 카카오 계정 OAuth 로그인을 지원합니다.
 
- 
+## 시스템 설계
+
   
 ## 서버 소개
 - 상황
@@ -65,3 +66,20 @@
 
 - 사용자 예약 정보
 <img width="414" alt="스크린샷 2023-04-06 오후 5 56 26" src="https://user-images.githubusercontent.com/103064352/230327543-57e44fff-692c-43c1-b91e-9f59039d3ee7.png">
+
+## MVVM
+
+- 장점
+  - 뷰와 비즈니스 로직의 분리
+  - 뷰의 비대화 문제 해결
+
+- 적용
+  - View
+    - VM을 통해 Model과 상호작용
+    - LoginScreen, NavigationMenu, SpaceListScreen 등 디스플레이에 표시되는 화면
+  - View Model
+    - 계정, 지도, 공간 데이터 관리
+    - 
+  - Model
+    - 서버에서 json으로 받아온 데이터를 저장
+    - VM을 통해 업데이트
