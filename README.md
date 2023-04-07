@@ -3,13 +3,12 @@
 시흥시 장소 대여 웹사이트 [시소](https://share.siheung.go.kr/index.do)에 대한 안드로이드/iOS 크로스 플랫폼 이식 프로젝트입니다.
 
 ## 프로젝트 소개
-
-- ### 어떤 체육시설, 강의시설이 있는지 내 손안에서 쉽게 보세요
- 상세 내용 쓸 예정
+- ### 어떤 시설이 있는지 내 손안에서 쉽게 보세요
+> 대여를 원하는 시설의 카테고리를 먼저 선택하고, 시설들 목록을 간단한 정보와 함께 조회하세요
 - ### 쓰고 싶은 장소를 바로바로 예약하세요
-상세 내용 쓸 예정
+> 장소의 상세 정보를 조회한 후에 예약 신청을 손쉽게 수행할 수 있습니다
 - ### 내가 어떤 장소를 빌렸는지 즉시 확인하세요
-상세 내용 쓸 예정
+> 장소의 예약 내역이 사용자 별로 서버에 저장되어 앱 내부 페이지에서 조회 가능합니다 
 
 ## 기획 및 개발 기간
 - ### 2022. 10. 01 ~ 2023. 02. 07
@@ -19,9 +18,9 @@
 ![flutter logo](https://img.shields.io/badge/flutter-02569B?style=flat&logo=flutter)
 ![dart logo](https://img.shields.io/badge/Dart-0175C2?style=flat&logo=dart)
 ![android studio logo](https://img.shields.io/badge/Android_Studio-3DDC84?style=flat&logo=androidstudio&logoColor=white)
-![kakao logo](https://img.shields.io/badge/kakao_map_SDK-FFCD00?style=flat&logo=kakao&logoColor=black)
-![kakao logo](https://img.shields.io/badge/kakao_login_SDK-FFCD00?style=flat&logo=kakao&logoColor=black)
-![firebase logo](https://img.shields.io/badge/firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black)
+![kakao logo1](https://img.shields.io/badge/kakao_map_SDK-FFCD00?style=flat&logo=kakao&logoColor=black)
+![kakao logo2](https://img.shields.io/badge/kakao_login_SDK-FFCD00?style=flat&logo=kakao&logoColor=black)
+![firebase logo](https://img.shields.io/badge/firebase-ffca28?style=flat&logo=firebase&logoColor=black)
     
     
       
@@ -32,13 +31,16 @@
 ## 시연 영상
 
 ![공간-소개](https://user-images.githubusercontent.com/103064352/230341580-802d219a-147c-458d-92e2-c6c610ed573a.gif)
+> 초기 화면에서 공간 카테고리 선택을 통해 원하는 장소들의 카테고리 필터링을 통한 조회가 가능합니다.
 
 ![날짜-및-시간-지정](https://user-images.githubusercontent.com/103064352/230341229-6f2090e0-4a2b-41c4-b8b8-8504708ccda3.gif)
+> [syncfusion_flutter_datepicker](https://pub.dev/packages/syncfusion_flutter_datepicker)와 [time_range](https://pub.dev/packages/time_range)를 통해 원하는 날짜와 시간 선택이 가능합니다.
 
 ![도움말](https://user-images.githubusercontent.com/103064352/230345680-e7ebe8b4-b1d8-48af-9b7d-7e82e0604147.gif)
+> [webview_flutter](https://pub.dev/packages/webview_flutter)를 통해 기존 [시소](https://share.siheung.go.kr/index.do) 사이트의 공지사항 조회가 가능합니다.
 
-![오어스](https://user-images.githubusercontent.com/103064352/230344767-44cbdfb3-c14e-46ca-abb4-5f5a44f80d5d.gif)
-
+![소셜로그인](https://user-images.githubusercontent.com/103064352/230344767-44cbdfb3-c14e-46ca-abb4-5f5a44f80d5d.gif)
+> [kakao_flutter_sdk_user](https://pub.dev/packages/kakao_flutter_sdk_user)를 통해 카카오 계정 OAuth 로그인을 지원합니다.
 
  
   
@@ -53,7 +55,7 @@
   
   
 ## DB구축
-### fireBase의 Realtime Database를 활용하여 NoSql 임시 데이터 베이스 구축
+### fireBase의 Realtime Database를 활용하여 NoSQL 임시 데이터 베이스 구축
 - [전체 사진](https://user-images.githubusercontent.com/103064352/230302426-f0c5f7bd-243f-43e2-9ead-bac36686322a.png)
 - 공간 소유주 개인정보
 <img width="586" alt="스크린샷 2023-04-06 오후 5 50 23" src="https://user-images.githubusercontent.com/103064352/230326338-b315187a-e1c5-4a5b-9ee9-5c4e8e3f262b.png">
