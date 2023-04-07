@@ -43,7 +43,7 @@
 > [kakao_flutter_sdk_user](https://pub.dev/packages/kakao_flutter_sdk_user)를 통해 카카오 계정 OAuth 로그인을 지원합니다.
 
 ## 시스템 설계
-
+![아키텍처](https://user-images.githubusercontent.com/42719337/230574145-e13ee429-d62c-4f05-b2d9-7c6abb991941.png)
   
 ## 서버 소개
 - 상황
