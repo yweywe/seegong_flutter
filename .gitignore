@@ -352,3 +352,6 @@ hs_err_pid*
 
 # End of https://www.toptal.com/developers/gitignore/api/dart,flutter,visualstudiocode,androidstudio,intellij
 android/.idea/
+
+# macOS #
+**/.DS_Store
