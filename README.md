@@ -43,7 +43,7 @@
 > [kakao_flutter_sdk_user](https://pub.dev/packages/kakao_flutter_sdk_user)를 통해 카카오 계정 OAuth 로그인을 지원합니다.
 
 ## 시스템 설계
-![아키텍처](https://user-images.githubusercontent.com/42719337/230574145-e13ee429-d62c-4f05-b2d9-7c6abb991941.png)
+![아키텍처](https://user-images.githubusercontent.com/42719337/230725558-dd836896-e2eb-4e33-b7fd-b4c523b016fc.png)
   
 ## 서버 소개
 - 상황
@@ -79,7 +79,6 @@
     - LoginScreen, NavigationMenu, SpaceListScreen 등 디스플레이에 표시되는 화면
   - View Model
     - 계정, 지도, 공간 데이터 관리
-    - 
   - Model
     - 서버에서 json으로 받아온 데이터를 저장
     - VM을 통해 업데이트
