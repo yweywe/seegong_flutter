@@ -2,6 +2,17 @@
 
 시흥시 장소 대여 웹사이트 [시소](https://share.siheung.go.kr/index.do)에 대한 안드로이드/iOS 크로스 플랫폼 이식 프로젝트입니다.
 
+<br/>
+
+<div>
+<img src = "https://user-images.githubusercontent.com/103064352/230726357-e07cd04b-d83a-48d6-afdf-4ec3f0d7ea59.png" width = "20%" height = "20%" />
+<h4> PlayStore [링크] <a>(https://play.google.com/store/apps/details?id=org.tukorea.seegong_flutter)</a> <h4/>
+
+</div>
+
+
+
+
 ## 프로젝트 소개
 - ### 어떤 시설이 있는지 내 손안에서 쉽게 보세요
     - 대여를 원하는 시설의 카테고리를 먼저 선택하고, 시설들 목록을 간단한 정보와 함께 조회하세요
