@@ -28,8 +28,8 @@
 ![flutter logo](https://img.shields.io/badge/flutter-02569B?style=flat&logo=flutter)
 ![dart logo](https://img.shields.io/badge/Dart-0175C2?style=flat&logo=dart)
 ![android studio logo](https://img.shields.io/badge/Android_Studio-3DDC84?style=flat&logo=androidstudio&logoColor=white)
-![kakao logo1](https://img.shields.io/badge/kakao_map_SDK-FFCD00?style=flat&logo=kakao&logoColor=black)
-![kakao logo2](https://img.shields.io/badge/kakao_login_SDK-FFCD00?style=flat&logo=kakao&logoColor=black)
+![google map logo](https://img.shields.io/badge/Google_Map_SDK-4285F4?style=flat&logo=googlemaps&logoColor=white)
+![kakao logo](https://img.shields.io/badge/kakao_login_SDK-FFCD00?style=flat&logo=kakao&logoColor=black)
 ![firebase logo](https://img.shields.io/badge/firebase-ffca28?style=flat&logo=firebase&logoColor=black)
     
     
