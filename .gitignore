@@ -85,6 +85,8 @@ lib/generated_plugin_registrant.dart
 **/ios/Flutter/flutter_export_environment.sh
 **/ios/ServiceDefinitions.json
 **/ios/Runner/GeneratedPluginRegistrant.*
+**/ios/Runner/Storage.swift
+/lib/auth/keys.dart
 
 # Exceptions to above rules.
 !**/ios/**/default.mode1v3
@@ -349,3 +351,7 @@ hs_err_pid*
 !/gradle/wrapper/gradle-wrapper.jar
 
 # End of https://www.toptal.com/developers/gitignore/api/dart,flutter,visualstudiocode,androidstudio,intellij
+android/.idea/
+
+# macOS #
+**/.DS_Store

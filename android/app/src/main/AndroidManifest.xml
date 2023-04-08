@@ -1,10 +1,45 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.tukorea.seegong_flutter">
+
+    <!-- 권한내용 for url_launcher-->
+    <!-- Provide required visibility configuration for API level 30 and above  정다함씨 수정함-->
+    <queries>
+        <!-- If your app checks for SMS support -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="sms" />
+        </intent>
+        <!-- If your app checks for call support -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="tel" />
+        </intent>
+    </queries>
+
    <application
-        android:label="seegong_flutter"
+
+        android:label="시소"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
+
+
+       <meta-data android:name="com.google.android.geo.API_KEY"
+           android:value="AIzaSyBoxIp0jd12bpdWGbTUJuI9oI84SwyBMxw"/>
+       <activity
+           android:name="com.kakao.sdk.flutter.AuthCodeCustomTabsActivity"
+           android:exported="true">
+           <intent-filter android:label="flutter_web_auth">
+               <action android:name="android.intent.action.VIEW" />
+               <category android:name="android.intent.category.DEFAULT" />
+               <category android:name="android.intent.category.BROWSABLE" />
+
+               <!-- Redirect URI, "kakao${YOUR_NATIVE_APP_KEY}://oauth" 형식 -->
+               <data android:scheme="kakao6488223bf1a9a5cc54920080dc26bdcd" android:host="oauth"/>
+           </intent-filter>
+       </activity>
+
         <activity
+
             android:name=".MainActivity"
             android:exported="true"
             android:launchMode="singleTop"
