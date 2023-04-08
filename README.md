@@ -4,11 +4,11 @@
 
 <br/>
 
-<span>
-<img src="https://user-images.githubusercontent.com/103064352/230726357-e07cd04b-d83a-48d6-afdf-4ec3f0d7ea59.png" width="20%" height=20%" />
-<h4><a href="https://play.google.com/store/apps/details?id=org.tukorea.seegong_flutter"> PlayStore 링크</a><h4/>
-</span>
-
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/103064352/230726357-e07cd04b-d83a-48d6-afdf-4ec3f0d7ea59.png" width="20%" height=20%" />
+<h4 align = "center" ><a href="https://play.google.com/store/apps/details?id=org.tukorea.seegong_flutter"> PlayStore 링크</a><h4/>
+                                                                                       </p>
+                                                                                       
 ## 프로젝트 소개
 - ### 어떤 시설이 있는지 내 손안에서 쉽게 보세요
     - 대여를 원하는 시설의 카테고리를 먼저 선택하고, 시설들 목록을 간단한 정보와 함께 조회하세요
