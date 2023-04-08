@@ -47,17 +47,28 @@
 
 ## 시연 영상
 
-![공간-소개](https://user-images.githubusercontent.com/103064352/230341580-802d219a-147c-458d-92e2-c6c610ed573a.gif)
-> 초기 화면에서 공간 카테고리 선택을 통해 원하는 장소들의 카테고리 필터링을 통한 조회가 가능합니다.
+<p align="center">
+<img src="https://user-images.githubusercontent.com/103064352/230341580-802d219a-147c-458d-92e2-c6c610ed573a.gif" align="center" />
+<h4 align="center">초기 화면에서 공간 카테고리 선택을 통해 원하는 장소들의 카테고리 필터링을 통한 조회가 가능합니다.</h4>
+</p>
+<br/><br/>
+<p align="center">
+<img src="https://user-images.githubusercontent.com/103064352/230341229-6f2090e0-4a2b-41c4-b8b8-8504708ccda3.gif" align="center" />
+<h4 align="center"><a href="https://pub.dev/packages/syncfusion_flutter_datepicker">syncfusion_flutter_datepicker</a>와 <a href="https://pub.dev/packages/time_range">time_range</a>를 통해 원하는 날짜와 시간 선택이 가능합니다.</h4>
+</p>
+<br/><br/>
+<p align="center">
+<img src="https://user-images.githubusercontent.com/103064352/230345680-e7ebe8b4-b1d8-48af-9b7d-7e82e0604147.gif" align="center" />
+<h4 align="center"><a href="https://pub.dev/packages/webview_flutter>webview_flutter</a>를 통해 기존 <a href="https://share.siheung.go.kr/index.do>시소</a> 사이트의 공지사항 조회가 가능합니다.</h4>
+</p>
+<br/><br/>
+<p align="center">
+<img src="https://user-images.githubusercontent.com/103064352/230344767-44cbdfb3-c14e-46ca-abb4-5f5a44f80d5d.gif" align="center" />
+<h4 align="center"><a href="https://pub.dev/packages/kakao_flutter_sdk_user">kakao_flutter_sdk_user</a>를 통해 카카오 계정 OAuth 로그인을 지원합니다.</h4>
+</p>
 
-![날짜-및-시간-지정](https://user-images.githubusercontent.com/103064352/230341229-6f2090e0-4a2b-41c4-b8b8-8504708ccda3.gif)
-> [syncfusion_flutter_datepicker](https://pub.dev/packages/syncfusion_flutter_datepicker)와 [time_range](https://pub.dev/packages/time_range)를 통해 원하는 날짜와 시간 선택이 가능합니다.
+<br/>
 
-![도움말](https://user-images.githubusercontent.com/103064352/230345680-e7ebe8b4-b1d8-48af-9b7d-7e82e0604147.gif)
-> [webview_flutter](https://pub.dev/packages/webview_flutter)를 통해 기존 [시소](https://share.siheung.go.kr/index.do) 사이트의 공지사항 조회가 가능합니다.
-
-![소셜로그인](https://user-images.githubusercontent.com/103064352/230344767-44cbdfb3-c14e-46ca-abb4-5f5a44f80d5d.gif)
-> [kakao_flutter_sdk_user](https://pub.dev/packages/kakao_flutter_sdk_user)를 통해 카카오 계정 OAuth 로그인을 지원합니다.
 
 ## 시스템 설계
 ![아키텍처](https://user-images.githubusercontent.com/42719337/230725558-dd836896-e2eb-4e33-b7fd-b4c523b016fc.png)
