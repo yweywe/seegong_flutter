@@ -6,8 +6,7 @@
 
 <p align="center">
     <img src="https://user-images.githubusercontent.com/103064352/230726357-e07cd04b-d83a-48d6-afdf-4ec3f0d7ea59.png" width="20%" height=20%" />
-<h4 align = "center" ><a href="https://play.google.com/store/apps/details?id=org.tukorea.seegong_flutter"> PlayStore 링크</a><h4/>
-                                                                                       </p>
+</p>
                                                                                        
 ## 프로젝트 소개
 - ### 어떤 시설이 있는지 내 손안에서 쉽게 보세요
